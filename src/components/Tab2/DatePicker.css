@@ -1,0 +1,44 @@
+/* DatePicker.css */
+
+/* .react-datepicker 클래스는 달력 컴포넌트를 감싸는 최상위 div를 나타냅니다 */
+.react-datepicker {
+    background-color: #fff; /* 배경색을 흰색으로 변경 */
+    border-radius: 10px;
+    border: 0.1px solid rgba(130, 33, 254, 0.7);
+    box-shadow: 0px 0px 10px gray;
+    padding-bottom: 5px;
+    margin-left: 5px;
+  }
+  
+  /* .react-datepicker__day 클래스는 달력의 날짜 셀을 나타냅니다 */
+  .react-datepicker__day {
+    color: #333; /* 날짜 색상을 검정색으로 변경 */
+    background-color: #fff; /* 날짜 셀 배경색을 흰색으로 변경 */
+    border: 1px solid rgba(130, 33, 254, 0.3);
+    margin: 0.5px;
+  }
+  
+  /* .react-datepicker__day--selected 클래스는 선택된 날짜의 스타일을 나타냅니다 */
+  .react-datepicker__day--selected {
+    background-color: #8221FE; /* 선택된 날짜의 배경색을 파란색으로 변경 */
+    color: #fff; /* 선택된 날짜의 텍스트 색상을 흰색으로 변경 */
+    border-radius: 0px;
+  }
+  
+  .react-datepicker__header {
+    background-color: rgba(130, 33, 254, 0.95);
+    padding: 10px 5px 10px 5px; /* 헤더 부분의 안쪽 여백을 추가합니다 */
+    color: #fff;
+  }
+
+  .react-datepicker__current-month {
+    color: #fff; /* 헤더 부분의 월 텍스트 색상을 흰색으로 변경 */
+    font-size: 17px;
+    font-weight: bold;
+  }
+
+  .react-datepicker__day-name {
+    color: #fff; /* 요일 텍스트 색상을 흰색으로 변경 */
+    font-weight: normal;
+  }
+

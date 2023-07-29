@@ -1,0 +1,143 @@
+/* Tab1_DS.css (DS for District Selected) */
+.Tab1_DS {
+    position: relative;
+    left: 0px;
+    width: 250px;
+    height: 100%;
+    background-color: #ffffff;
+    z-index: 20;
+    display: flex;
+    flex-direction: column;
+    border-radius: 0px 20px 20px 0px;
+    box-shadow: 0.2px 0.2px 15px gray;
+  }
+  
+    .Tab1_DSItem {
+      padding: 15px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid rgba(130, 33, 254, 0.25);
+      cursor: pointer;
+      font-size:large;
+    }
+  
+  
+    .Tab1_DSContents {
+      margin: 10px 0px 20px 0px;
+      flex: 1; /* 남은 공간을 차지합니다. */
+      background-color: #ffffff;
+      overflow-y: scroll;
+    }
+  
+  
+    /* 내부 그룹 박스 */
+    .GroupBox_DS {
+      border-style: solid;
+      border-width: 0.8px;
+      border-color: #8221FE;
+      border-radius: 15px;
+      margin: 1ch 25px 17px 25px;
+      height: 107px;
+      background-color: #ffffff;
+      box-shadow: 0px 0px 7px rgb(161, 161, 161);
+      
+      box-sizing: border-box; /* 안쪽 여백만 요소 높이에 포함되도록 설정합니다. */
+      padding: 10px 10px 10px 15px; /* 원하는 안쪽 여백 값을 설정합니다. */
+      display: flex;
+      justify-content: space-between; /* 요소들을 가로 방향으로 최대한 넓게 분배하여 두 요소를 양쪽으로 밀어냄 */
+    }
+  
+    .GroupBox_DS:last-child {
+      border-style: solid;
+      border-width: 0.8px;
+      border-color: #8221FE;
+      border-radius: 15px;
+      margin: 15px 25px 10px 25px;
+      height: 107px;
+      background-color: #ffffff;
+      box-shadow: 0px 0px 7px rgb(161, 161, 161);
+  
+      box-sizing: border-box; /* 안쪽 여백만 요소 높이에 포함되도록 설정합니다. */
+      padding: 10px 10px 10px 15px; /* 원하는 안쪽 여백 값을 설정합니다. */
+      display: flex;
+      justify-content: space-between; /* 요소들을 가로 방향으로 최대한 넓게 분배하여 두 요소를 양쪽으로 밀어냄 */
+    }
+  
+    .GroupBox_DS:only-child {
+      border-style: solid;
+      border-width: 0.8px;
+      border-color: #8221FE;
+      border-radius: 15px;
+      margin: 10px 25px 17px 25px;
+      height: 107px;
+      background-color: #ffffff;
+      box-shadow: 0px 0px 7px rgb(161, 161, 161);
+  
+      box-sizing: border-box; /* 안쪽 여백만 요소 높이에 포함되도록 설정합니다. */
+      padding: 10px 10px 10px 15px; /* 원하는 안쪽 여백 값을 설정합니다. */
+      display: flex;
+      justify-content: space-between; /* 요소들을 가로 방향으로 최대한 넓게 분배하여 두 요소를 양쪽으로 밀어냄 */
+    }
+
+    .GroupBox_DS.active {
+        background-color: rgba(130, 33, 254, 0.1);
+      }
+  
+  
+    /* 그룹 박스의 내부 */
+    .LeftContent_DS {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      width: 150px;
+    }
+
+    .RightContent_DS {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        width: 90px;
+    }
+  
+    .GroupName_DS {
+      position: relative;
+      top: 0%;
+      font-size: x-large;
+    }
+  
+    .GroupMembers_DS {
+      position: absolute;
+      bottom: 0;
+    }
+  
+    .groupmembersImage_DS {
+      width: 40px;
+      height: auto;
+    }
+  
+    .groupmembersText_DS {
+      position: relative;
+      top: -5px; /* 음수 값을 써줘서 위로 조금 올라가게 함. */
+      font-size: small;
+      color: gray;
+    }
+  
+    .showTab2Button_DS {
+      position: absolute;
+      bottom: 1px;
+      right: 0px;
+      width: 35px;
+      height: 35px;
+      font-size: large;
+      border: 1px solid #8221FE;
+      border-radius: 20px;
+      background-color: #8221FE;
+      color: #ffffff;
+    }
+
+    .Duration_DS {
+        position: absolute;
+        right: 0;
+        color: gray;
+        font-size: small;
+    }
+  
