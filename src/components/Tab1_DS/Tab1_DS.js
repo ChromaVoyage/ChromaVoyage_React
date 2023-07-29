@@ -21,10 +21,6 @@ function Tab1_DS({ openTab2_DS, isTab2_DSOpen }) {
     openTab2_DS(); // Tab2_DS를 열기 위해 opneTab2_DS 함수 호출
   };
 
-//   const handleGroupBoxClick = (index) => {
-//     setActiveGroupBoxIndex(index); // 클릭한 그룹 박스의 인덱스를 상태로 저장
-//   };
-
   const handleGroupBoxClick = (index) => {
     if (showTab2_DS && activeGroupBox_DSIndex === index) {
       setActiveGroupBox_DSIndex(-1); // Tab2가 닫혔으므로 activeGroupBoxIndex를 -1로 설정
