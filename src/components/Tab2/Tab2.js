@@ -1,12 +1,14 @@
 // Tab2.js
-import React, { useState } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import './Tab2.css';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import './DatePicker.css';
 import DaumPostcode from 'react-daum-postcode';
+import { MyContext } from '../../MyContextProvider';
 
 function Tab2() {
+  const { name, selectedLocations, setSelectedLocations } = useContext(MyContext);
   const [selectedDate, setSelectedDate] = useState(null);
   const [selectedAddress, setSelectedAddress] = useState('');
   const [showDaumPostcode, setShowDaumPostcode] = useState(false); // 추가: Daum 우편번호 팝업 노출 여부 상태 변수
@@ -34,6 +36,17 @@ function Tab2() {
   const handleDaumPostcodeClose = () => {
     setShowDaumPostcode(false);
   };
+
+  const handleMapButtonClick = () => {
+    // 지도에서 선택한 지역을 리스트에 추가합니다.
+    setSelectedLocations([...selectedLocations, name]);
+    console.log('지도에서 선택 버튼이 클릭되었습니다.');
+  };
+
+  useEffect(() => {
+    // 선택된 모든 지역을 리스트로 저장하고 화면에 출력합니다.
+    console.log('선택된 모든 지역:', selectedLocations);
+  }, [selectedLocations]);
 
   return (
     <div>
@@ -70,6 +83,20 @@ function Tab2() {
             <button onClick={handleDaumPostcodeClose}>x</button>
           </div>          
         )}
+
+        <div style={{ paddingTop: '10px' }}>
+          선택된 지역:
+          <ul>
+            {selectedLocations.map((location, index) => (
+              <li key={index}>{location}</li>
+            ))}
+          </ul>
+        </div>
+
+        <button onClick={handleMapButtonClick} className="MapSelectButton">
+          지역 추가하기
+        </button>
+
       </div>
     </div>
   )

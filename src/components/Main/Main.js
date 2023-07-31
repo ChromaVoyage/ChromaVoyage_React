@@ -5,6 +5,7 @@ import Tab1 from '../Tab1/Tab1';
 import Tab2 from '../Tab2/Tab2';
 import Tab1_DS from '../Tab1_DS/Tab1_DS';
 import Tab2_DS from '../Tab2_DS/Tab2_DS';
+import KakaoMap2 from '../../KakaoMap2';
 
 
 function Main() {
@@ -80,6 +81,10 @@ function Main() {
           <b>{isTab1_DSOpen ? '<' : '>'}</b>
         </button> */}
 
+        </div> {/* end of tab container */}
+        
+        <div>
+          <KakaoMap2/>
         </div>
         
     </div>
