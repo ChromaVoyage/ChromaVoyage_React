@@ -17,6 +17,7 @@ function Tab2_DS() {
       <div className="Tab2_DSItem"><b>지역</b></div>
       <span className="Tab2_DSText">지도에서 선택 or 도로명 주소를 입력하세요.</span>
 
+
       <div className="Tab2_DSItem"><b>장소</b></div>
 
       <div className="Tab2_DSItem"><b>이미지</b></div>
