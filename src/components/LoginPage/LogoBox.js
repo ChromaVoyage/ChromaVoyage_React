@@ -8,7 +8,7 @@ const Wrapper = styled.div`
     min-height: 100vh;
 `;
 
-const Box =styled.div`
+const Box = styled.div`
     background-color: #7A4495;
     width: 300px;
     height: 100px;

@@ -25,12 +25,15 @@ function Nav() {
   const handleCloseCreategroupModal = () => {
     setIsCreategroupModalOpen(false);
   };
+
   const handleEmailChange = (event) => {
     setEmailInputValue(event.target.value);
   }
+
   const handleChange = (event) => {
     setGroupInputValue(event.target.value);
   };
+
   const handleEmailSubmit = () => { //로직 구현 필요
     // 입력한 값을 처리하거나 저장하는 로직을 작성합니다.
     console.log('Input Value:', inputEmailValue);
@@ -67,11 +70,11 @@ function Nav() {
           <img src={creategroupImage} alt='CreateGroup' className="navbarImage" onClick={handleOpenCreategroupModal} />
           {/* 팝업 모달 */}
           <CreategroupModal isOpen={isCreategroupModalOpen} onClose={handleCloseCreategroupModal} inputGroupValue={inputGroupValue} inputEmailValue={inputEmailValue} handleEmailChange={handleEmailChange} handleChange={handleChange} handleEmailSubmit={handleEmailSubmit} handleSubmit={handleSubmit} />
-          <span onClick={handleOpenCreategroupModal} className="navbarMenu">그룹<br/>생성</span>
+          <span onClick={handleOpenCreategroupModal} className="navbarMenu">그룹<br/>생성하기</span>
 
           {/* 메뉴들 */}
-          <Link className="navbarMenu" to={'/'}>Main</Link>
-          <Link className="navbarMenu" to={'/login'}>Login</Link>
+          {/* <Link className="navbarMenu" to={'/'}>Main</Link>
+          <Link className="navbarMenu" to={'/login'}>Login</Link> */}
 
           {/* 선을 추가 */}
           <hr className="navbarLine" />
@@ -80,7 +83,6 @@ function Nav() {
           <img src={userImage} alt='User' className="navbarImage" onClick={handleOpenMypageModal} />
           <MypageModal isOpen={isMypageModalOpen} onClose={handleCloseMypageModal} />
         </div>
-        
       </div>
     </div>
   )
