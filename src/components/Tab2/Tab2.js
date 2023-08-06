@@ -8,7 +8,7 @@ import DaumPostcode from 'react-daum-postcode';
 import { MyContext } from '../../MyContextProvider';
 
 function Tab2() {
-  const { name, selectedLocations, setSelectedLocations } = useContext(MyContext);
+  const { name, setName, selectedLocations, setSelectedLocations, searchAddress, setSearchAddress } = useContext(MyContext);
   const [selectedDate, setSelectedDate] = useState(null);
   const [selectedAddress, setSelectedAddress] = useState('');
   const [showDaumPostcode, setShowDaumPostcode] = useState(false); // 추가: Daum 우편번호 팝업 노출 여부 상태 변수
@@ -25,8 +25,14 @@ function Tab2() {
     setShowDaumPostcode(false); // 팝업이 닫히도록 설정
     const fullAddress = data.address;
     const addressArray = fullAddress.split(' '); // 주소를 공백 문자를 기준으로 분리하여 배열로 만듦
-    const guAddress = addressArray[0] + " " + addressArray[1]; // 구 단위 주소를 가져옴
+    const guAddress = addressArray[0] + " " + addressArray[1];
+    const searchAddress = addressArray[0] + " " + addressArray[1]; // 구 단위 주소를 가져옴
     setSelectedAddress(guAddress); // 구 단위 주소를 선택된 주소로 설정
+    
+    console.log(guAddress);
+    
+    setSearchAddress(searchAddress);
+    setSelectedLocations((prev) => [...prev, guAddress]);
   };
 
   const handleAddressInputClick = () => {
@@ -39,8 +45,9 @@ function Tab2() {
 
   const handleMapButtonClick = () => {
     // 지도에서 선택한 지역을 리스트에 추가합니다.
-    setSelectedLocations([...selectedLocations, name]);
-    console.log('지도에서 선택 버튼이 클릭되었습니다.');
+    // setSelectedLocations([...selectedLocations, name]);
+    console.log("선택된 지역:", [selectedLocations]);
+    console.log('지역이 추가됨');
   };
 
   useEffect(() => {
@@ -94,7 +101,7 @@ function Tab2() {
         </div>
 
         <button onClick={handleMapButtonClick} className="MapSelectButton">
-          지역 추가하기
+          일정 추가하기
         </button>
 
       </div>

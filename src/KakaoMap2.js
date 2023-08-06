@@ -1,11 +1,13 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import { MyContext } from './MyContextProvider';
 
 const { kakao } = window;
 
 const KakaoMap2 = () => {
-  const { setName, setSelectedLocations } = useContext(MyContext);
+  const { setName, selectedLocations, setSelectedLocations, searchAddress } = useContext(MyContext);
   const geojson = require('./TL_SCCO_SIG.json'); // GeoJSON 데이터를 가져옵니다.
+  const mapRef = useRef(null); // 지도를 담을 ref
+  const [selectedPolygons, setSelectedPolygons] = useState([]); // 선택된 다각형들을 관리할 상태
 
   useEffect(() => {
     const data = geojson.features;
@@ -17,6 +19,7 @@ const KakaoMap2 = () => {
     };
 
     const map = new kakao.maps.Map(mapContainer, mapOption);
+    mapRef.current = map; // mapRef에 map 객체 저장
     const customOverlay = new kakao.maps.CustomOverlay({
       content: '<div class="area-tooltip"></div>',
       map: map,
@@ -25,7 +28,9 @@ const KakaoMap2 = () => {
     });
 
     const displayArea = (coordinates, name) => {
-      const path = coordinates[0].map((coordinate) => new kakao.maps.LatLng(coordinate[1], coordinate[0]));
+      const path = coordinates[0].map(
+        (coordinate) => new kakao.maps.LatLng(coordinate[1], coordinate[0])
+      );
 
       const polygon = new kakao.maps.Polygon({
         map: map,
@@ -34,7 +39,7 @@ const KakaoMap2 = () => {
         strokeColor: '#7A4495',
         strokeOpacity: 0.8,
         strokeStyle: 'solid',
-        fillColor: '#fff',
+        fillColor: searchAddress === name ? '#7A4495' : '#fff', // 선택한 지역이면 색칠, 아니면 기본 색상
         fillOpacity: 0.5,
       });
 
@@ -55,7 +60,7 @@ const KakaoMap2 = () => {
       // 다각형에 mouseout 이벤트를 등록하고 이벤트가 발생하면 임시 색칠을 초기화합니다.
       kakao.maps.event.addListener(polygon, 'mouseout', function () {
         if (!polygon.isFilled) {
-          polygon.setOptions({ fillColor: '#fff' });
+          polygon.setOptions({ fillColor: searchAddress === name ? '#7A4495' : '#fff' });
           isTemporaryFilled = false;
         }
         customOverlay.setMap(null);
@@ -65,18 +70,19 @@ const KakaoMap2 = () => {
       kakao.maps.event.addListener(polygon, 'click', function () {
         if (!polygon.isFilled) {
           polygon.setOptions({ fillColor: '#7A4495' });
-          isTemporaryFilled = false;
           polygon.isFilled = true;
           console.log('선택한 지역:', name);
           setName(name);
           setSelectedLocations((prev) => [...prev, name]);
         } else {
-          polygon.setOptions({ fillColor: '#fff' });
-          isTemporaryFilled = false;
+          polygon.setOptions({ fillColor: searchAddress === name ? '#7A4495' : '#fff' });
           polygon.isFilled = false;
           setSelectedLocations((prev) => prev.filter((location) => location !== name));
         }
       });
+
+      polygon.isFilled = selectedLocations.includes(name); // 선택된 지역인 경우에만 isFilled를 true로 설정
+      setSelectedPolygons((prev) => [...prev, { name, polygon }]);
     };
 
     data.forEach((val) => {
@@ -84,7 +90,27 @@ const KakaoMap2 = () => {
       const name = val.properties.SIG_KOR_NM;
       displayArea(coordinates, name);
     });
-  }, [setName, setSelectedLocations]);
+  }, [setName, setSelectedLocations, searchAddress]);
+
+  useEffect(() => {
+    // selectedLocations가 변경될 때마다 선택된 지역들을 색칠합니다.
+    const map = mapRef.current;
+    if (!map) return;
+
+    // 모든 다각형의 색상을 원래 색으로 초기화합니다.
+    selectedPolygons.forEach((item) => {
+      const { name, polygon } = item;
+      polygon.setOptions({ fillColor: searchAddress === name ? '#7A4495' : '#fff' });
+    });
+
+    // 선택된 지역들만 색칠합니다.
+    selectedPolygons.forEach((item) => {
+      const { name, polygon } = item;
+      if (selectedLocations.includes(name)) {
+        polygon.setOptions({ fillColor: '#7A4495' });
+      }
+    });
+  }, [selectedLocations, selectedPolygons, searchAddress]);
 
   return (
     <div style={{ display: 'flex', position: 'fixed', top: 0, right: 0, bottom: 0, left: 0 }}>
