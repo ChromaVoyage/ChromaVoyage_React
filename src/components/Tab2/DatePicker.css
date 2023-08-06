@@ -42,3 +42,47 @@
     font-weight: normal;
   }
 
+  .DateRangePicker {
+    display: flex;
+    align-items: center;
+  }
+  
+  /* DateRangePicker input styles */
+  .DateRangePicker .rdrDateRangeWrapper {
+    display: flex;
+    align-items: center;
+  }
+  
+  .DateRangePicker .rdrDateDisplayItem {
+    background-color: #fff;
+    border-radius: 10px;
+    border: 0.1px solid rgba(130, 33, 254, 0.7);
+    box-shadow: 0px 0px 10px gray;
+    padding: 5px;
+    margin-left: 5px;
+  }
+  
+  /* DateRangePicker separator styles */
+  .DateRangePicker .rdrDateDisplayItem:last-child:before {
+    content: "~";
+    color: #333;
+    font-weight: bold;
+    margin-right: 5px;
+  }
+  
+  /* DateRangePicker calendar styles */
+  .DateRangePicker .rdrMonths {
+    background-color: #fff;
+    border-radius: 10px;
+    border: 0.1px solid rgba(130, 33, 254, 0.7);
+    box-shadow: 0px 0px 10px gray;
+    padding: 10px;
+    margin-top: 10px;
+  }
+  
+  .DateRangePicker .rdrCalendarWrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+

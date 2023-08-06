@@ -62,6 +62,9 @@ function Main() {
     <div className="Main">
       <div className="tabContainer">
         <Nav />
+        <div>
+          <Tab2_DS/>
+        </div>
 
         {/* Tab Component */}
         {isTab1Open && <Tab1 openTab2={handleOpenTab2} isTab2Open={isTab2Open} />}
@@ -83,9 +86,11 @@ function Main() {
 
         </div> {/* end of tab container */}
         
+        
         <div>
           <KakaoMap2/>
         </div>
+        
         
     </div>
   )

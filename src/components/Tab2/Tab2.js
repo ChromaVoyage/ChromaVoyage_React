@@ -1,4 +1,3 @@
-// Tab2.js
 import React, { useState, useContext, useEffect } from 'react';
 import './Tab2.css';
 import DatePicker from 'react-datepicker';
