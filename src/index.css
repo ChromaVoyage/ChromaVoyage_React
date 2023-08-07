@@ -11,3 +11,120 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.map-container {
+  padding: 20px;
+  text-align: center;
+}
+
+.place-list-container {
+  max-height: 200px; /* 원하는 높이로 조절 */
+  overflow-y: auto;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+.place-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.place-list li {
+  padding: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.place-list li:hover {
+  background-color: #f0f0f0;
+}
+
+.selected {
+  background-color: #d3d3d3;
+}
+
+.mapsearchinput {
+    height: 35px;
+    width: 165px;
+    font-size: x-small;
+    padding-left: 10px;
+    background-color: rgba(130, 33, 254, 0.1);
+    border: 0px solid;
+    border-radius: 7px;
+
+}
+
+.search-button {
+  margin-left: 5px;
+  height: 35px;
+  border: 0px solid;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #8221FE;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+
+}
+
+.search-button:hover {
+  transform: scale(1.2); /* 호버 시 약간 크기 키우기 효과 */
+}
+
+.popup-container {
+  position: absolute;
+  top: 290px; /* 원하는 위치로 조정하세요 */
+  left: 0;
+  
+  width: 90%;
+  margin-left: 30px;
+  max-height: 200px;
+  overflow-y: auto;
+  background-color: white;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 1000; /* 검색 결과 목록이 위에 뜨도록 z-index 설정 */
+  border-radius: 7px;
+}
+
+.popup-container .close-button {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+/* .selected-places {
+  
+  
+  margin-bottom: 5px;
+  height: 35px;
+    width: 165px;
+    font-size: x-small;
+    padding-left: 10px;
+    background-color: rgba(130, 33, 254, 0.1);
+    border: 0px solid;
+    border-radius: 7px;
+
+} */
+
+.selected-place {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px; /* 장소 목록 간격 조절을 위한 마진 추가 */
+  font-size: x-small;
+}
+
+.remove-button {
+  margin-left: 5px; /* 장소 이름과 버튼 사이 간격 조절을 위한 마진 추가 */
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 14px; /* 원하는 버튼 크기로 조정 */
+  color: #8221FE; /* 버튼 색상 지정 */
+}
+
+.popup-container .place-list .selected::before {
+  content: none;
+}
