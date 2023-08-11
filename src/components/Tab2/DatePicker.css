@@ -42,47 +42,38 @@
     font-weight: normal;
   }
 
-  .DateRangePicker {
-    display: flex;
-    align-items: center;
+
+  .DateRangePickerContainer .rdrDefinedRangesWrapper {
+    display: none;
   }
-  
-  /* DateRangePicker input styles */
-  .DateRangePicker .rdrDateRangeWrapper {
-    display: flex;
-    align-items: center;
+
+  .rdrStaticRanges {
+    font-size: 12px; /* 라벨의 폰트 크기를 조절 */
   }
-  
-  .DateRangePicker .rdrDateDisplayItem {
+
+  .CalendarOverlay {
+    position: absolute;
+    z-index: 1;
     background-color: #fff;
     border-radius: 10px;
-    border: 0.1px solid rgba(130, 33, 254, 0.7);
+    /* border: 1px solid rgba(130, 33, 254, 0.7); */
     box-shadow: 0px 0px 10px gray;
-    padding: 5px;
-    margin-left: 5px;
-  }
-  
-  /* DateRangePicker separator styles */
-  .DateRangePicker .rdrDateDisplayItem:last-child:before {
-    content: "~";
-    color: #333;
-    font-weight: bold;
-    margin-right: 5px;
-  }
-  
-  /* DateRangePicker calendar styles */
-  .DateRangePicker .rdrMonths {
-    background-color: #fff;
-    border-radius: 10px;
-    border: 0.1px solid rgba(130, 33, 254, 0.7);
-    box-shadow: 0px 0px 10px gray;
+    width: 310px;
+    height: 330px;
+    top: 17%;
+    left: 70%;
+    transform: translateX(-50%);
     padding: 10px;
-    margin-top: 10px;
   }
   
-  .DateRangePicker .rdrCalendarWrapper {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+  .CloseButton {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background-color: transparent;
+    border: none;
+    font-size: 14px;
+    cursor: pointer;
   }
+
 

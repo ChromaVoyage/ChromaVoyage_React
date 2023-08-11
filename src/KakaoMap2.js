@@ -10,10 +10,6 @@ const KakaoMap2 = () => {
   const [selectedPolygons, setSelectedPolygons] = useState([]);
   const [selectedMarkers, setSelectedMarkers] = useState([]); // 선택된 다각형들을 관리할 상태
 
-  const markerImageSrc = './user.png';
-  const markerSize = new kakao.maps.Size(30, 30);
-  const markerOffset = new kakao.maps.Point(15, 15);
- 
 
   useEffect(() => {
     const data = geojson.features;

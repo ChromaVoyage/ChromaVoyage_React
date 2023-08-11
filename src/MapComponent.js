@@ -3,6 +3,7 @@ import axios from "axios";
 import { FaSearch } from "react-icons/fa"; // Font Awesome 검색 아이콘 가져오기
 import { MyContext } from "./MyContextProvider";
 
+
 const MapComponent = () => {
   const [query, setQuery] = useState("");
   const [searchResults, setSearchResults] = useState([]);
@@ -10,17 +11,36 @@ const MapComponent = () => {
   const [showResults, setShowResults] = useState(false); // 초기값을 false로 설정
   const { selectedPlaces, setSelectedPlaces } = useContext(MyContext);
 
-  const handlePlaceClick = (index) => {
-    setSelectedPlace(index);
-    setQuery(searchResults[index].place_name);
+  // const handlePlaceClick = (index) => {
+  //   setSelectedPlace(index);
+  //   setQuery(searchResults[index].place_name);
 
-    const place = {
-      address: searchResults[index].place_name,
-      x: searchResults[index].x,
-      y: searchResults[index].y,
-    };
-    setSelectedPlaces((prev) => [...prev, place]);
+  //   const place = {
+  //     address: searchResults[index].place_name,
+  //     x: searchResults[index].x,
+  //     y: searchResults[index].y,
+  //   };
+  //   setSelectedPlaces((prev) => [...prev, place]);
+  // };
+
+  const handlePlaceClick = (index) => {
+    // 이미 선택한 장소인지 확인
+    const isAlreadySelected = selectedPlaces.some((place) => place.address === searchResults[index].place_name);
+  
+    // 이미 선택한 장소라면 추가하지 않음
+    if (!isAlreadySelected) {
+      setSelectedPlace(index);
+      setQuery(searchResults[index].place_name);
+  
+      const place = {
+        address: searchResults[index].place_name,
+        x: searchResults[index].x,
+        y: searchResults[index].y,
+      };
+      setSelectedPlaces((prev) => [...prev, place]);
+    }
   };
+  
 
   const handleClosePlace = (index) => {
     setSelectedPlaces((prev) => prev.filter((_, i) => i !== index));
@@ -85,9 +105,9 @@ const MapComponent = () => {
         </div>
       )}
       <div className="selected-places">
-        <ul>
+        <ul className="no-bullet-list">
             {selectedPlaces.map((place, index) => (
-            <li key={index}>
+            <li key={index} className="no-bullet">
                 <div className="selected-place">
                 <strong>{place.address}</strong>
                 <button className="remove-button" onClick={() => handleClosePlace(index)}>x</button>

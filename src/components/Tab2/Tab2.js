@@ -1,41 +1,49 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext, useEffect, useRef } from 'react';
 import './Tab2.css';
 import DatePicker from 'react-datepicker';
+import { DateRange, Calendar } from 'react-date-range';
+import { addDays } from "date-fns"
 import 'react-datepicker/dist/react-datepicker.css';
 import './DatePicker.css';
 import DaumPostcode from 'react-daum-postcode';
 import { MyContext } from '../../MyContextProvider';
+import 'react-date-range/dist/styles.css'; // main css file
+import 'react-date-range/dist/theme/default.css'; // theme css file
 
 function Tab2() {
   const { name, setName, selectedLocations, setSelectedLocations, searchAddress, setSearchAddress } = useContext(MyContext);
   const [selectedDate, setSelectedDate] = useState(null);
   const [selectedAddress, setSelectedAddress] = useState('');
-  const [showDaumPostcode, setShowDaumPostcode] = useState(false); // 추가: Daum 우편번호 팝업 노출 여부 상태 변수
+  const [showDaumPostcode, setShowDaumPostcode] = useState(false);
+  const [showCalendar, setShowCalendar] = useState(false);
+  const [state, setState] = useState([
+    {
+      startDate: new Date(),
+      endDate: addDays(new Date(), 1),
+      key: 'selection'
+    }
+  ]);
 
-  const handleDateChange = (date) => {
-    setSelectedDate(date);
-  };
+  const calendarRef = useRef(null);
+
 
   const handleAddressChange = (event) => {
     setSelectedAddress(event.target.value);
   };
 
   const handleAddress = (data) => {
-    setShowDaumPostcode(false); // 팝업이 닫히도록 설정
+    setShowDaumPostcode(false);
     const fullAddress = data.address;
-    const addressArray = fullAddress.split(' '); // 주소를 공백 문자를 기준으로 분리하여 배열로 만듦
+    const addressArray = fullAddress.split(' ');
     const guAddress = addressArray[0] + " " + addressArray[1];
-    const searchAddress = addressArray[0] + " " + addressArray[1]; // 구 단위 주소를 가져옴
-    setSelectedAddress(guAddress); // 구 단위 주소를 선택된 주소로 설정
-    
-    console.log(guAddress);
-    
+    const searchAddress = addressArray[0] + " " + addressArray[1];
+    setSelectedAddress(guAddress);
     setSearchAddress(searchAddress);
     setSelectedLocations((prev) => [...prev, guAddress]);
   };
 
   const handleAddressInputClick = () => {
-    setShowDaumPostcode(true); // 주소 입력란 클릭 시 팝업을 띄우도록 설정
+    setShowDaumPostcode(true);
   };
 
   const handleDaumPostcodeClose = () => {
@@ -43,14 +51,16 @@ function Tab2() {
   };
 
   const handleMapButtonClick = () => {
-    // 지도에서 선택한 지역을 리스트에 추가합니다.
-    // setSelectedLocations([...selectedLocations, name]);
     console.log("선택된 지역:", [selectedLocations]);
     console.log('지역이 추가됨');
   };
 
+  const handleDateRangeChange = (ranges) => {
+    setState([ranges.selection]);
+    setSelectedDate(`${ranges.selection.startDate.toLocaleDateString()} - ${ranges.selection.endDate.toLocaleDateString()}`);
+  };
+
   useEffect(() => {
-    // 선택된 모든 지역을 리스트로 저장하고 화면에 출력합니다.
     console.log('선택된 모든 지역:', selectedLocations);
   }, [selectedLocations]);
 
@@ -61,13 +71,42 @@ function Tab2() {
 
         <div className="Tab2Contents">
           <span className="Tab2Text">방문 일정을 선택하세요.</span>
-          <DatePicker
-            selected={selectedDate}
-            onChange={handleDateChange}
-            placeholderText="YYMMDD 형식으로 입력 (ex. 230713)"
-            dateFormat="yyMMdd"
+          <input
+            type="text"
             className="Tab2Textbox"
+            value={selectedDate}
+            onClick={() => {
+              setShowCalendar(true);
+              if (calendarRef.current) {
+                calendarRef.current.click();
+              }
+            }}
           />
+          {showCalendar && (
+            <div className="CalendarOverlay">
+              <DateRange
+                ref={calendarRef}
+                editableDateInputs={false}
+                onChange={handleDateRangeChange}
+                moveRangeOnFirstSelection={false}
+                ranges={state}
+                style={{
+                  position: 'absolute',
+                  zIndex: '999',
+                  width: '300px',
+                }}
+                inputRanges={[
+                  {
+                    startDate: new Date(),
+                    endDate: addDays(new Date(), 1),
+                    key: 'selection'
+                  }
+                ]}
+                calendar={<Calendar style={{ width: '200px', height: '200px' }} />}
+              />
+              <button className="CloseButton" onClick={() => setShowCalendar(false)}>x</button>
+            </div>
+          )}
         </div>
 
         <div className="Tab2Item"><b>지역 추가</b></div>
@@ -84,13 +123,13 @@ function Tab2() {
         {showDaumPostcode && (
           <div>
             <DaumPostcode
-            onComplete={handleAddress}
+              onComplete={handleAddress}
             />
             <button onClick={handleDaumPostcodeClose}>x</button>
-          </div>          
+          </div>
         )}
 
-        <div style={{ paddingTop: '10px' }}>
+        <div className="Tab2Text" style={{ paddingTop: '10px' }}>
           선택된 지역:
           <ul>
             {selectedLocations.map((location, index) => (
