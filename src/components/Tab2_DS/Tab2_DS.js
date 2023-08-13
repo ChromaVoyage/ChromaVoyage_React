@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import './Tab2_DS.css'; // CSS 파일을 추가해줍니다.
 import MapComponent from '../../MapComponent';
+import ImageComponent from './ImageComponent';
 
 const { kakao } = window;
 var geocoder = new kakao.maps.services.Geocoder()
@@ -28,7 +29,9 @@ function Tab2_DS() {
           <MapComponent/>
         </div>
 
-      <div className="Tab2_DSItem"><b>이미지</b></div>
+      <div className="ImageComponentContainer">
+      <ImageComponent />
+      </div>
     </div>
     </div>
   )
