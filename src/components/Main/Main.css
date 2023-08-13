@@ -31,3 +31,7 @@
     color: rgb(98, 98, 98);
     font-size: large;
   }
+
+  .noshow {
+    display: none;
+  }

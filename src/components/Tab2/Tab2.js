@@ -8,10 +8,14 @@ import DaumPostcode from 'react-daum-postcode';
 import { MyContext } from '../../MyContextProvider';
 
 function Tab2() {
-  const { name, selectedLocations, setSelectedLocations } = useContext(MyContext);
+  const { name, selectedLocations, setSelectedLocations, activeGroupBoxIndex } = useContext(MyContext);
   const [selectedDate, setSelectedDate] = useState(null);
   const [selectedAddress, setSelectedAddress] = useState('');
   const [showDaumPostcode, setShowDaumPostcode] = useState(false); // 추가: Daum 우편번호 팝업 노출 여부 상태 변수
+
+  let GroupIndex = activeGroupBoxIndex
+
+  console.log("activeGroupBoxIndex: ", GroupIndex)
 
   const handleDateChange = (date) => {
     setSelectedDate(date);
@@ -53,7 +57,17 @@ function Tab2() {
       <div className="Tab2">
         <div className="Tab2Item"><b>일정 추가</b></div>
 
+        {/* "일정 추가" 문구 다음 줄에 activeGroupBoxIndex 값 표시 */}
+        {activeGroupBoxIndex !== -1 && (
+          <div className="Tab2Item"><b>선택한 그룹 인덱스: {activeGroupBoxIndex}</b></div>
+        )}
+
         <div className="Tab2Contents">
+          {/* 수정: 선택된 그룹의 정보를 화면에 표시 */}
+          {/* <span className="Tab2Text">선택한 그룹 이름: {activeGroupData.name}</span>
+          <span className="Tab2Text">멤버: {activeGroupData.member}</span>
+          <span className="Tab2Text">멤버 수: {activeGroupData.memberCount}</span> */}
+          {/* 기존 코드 */}
           <span className="Tab2Text">방문 일정을 선택하세요.</span>
           <DatePicker
             selected={selectedDate}
@@ -78,10 +92,10 @@ function Tab2() {
         {showDaumPostcode && (
           <div>
             <DaumPostcode
-            onComplete={handleAddress}
+              onComplete={handleAddress}
             />
             <button onClick={handleDaumPostcodeClose}>x</button>
-          </div>          
+          </div>
         )}
 
         <div style={{ paddingTop: '10px' }}>
