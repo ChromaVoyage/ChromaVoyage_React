@@ -1,14 +1,16 @@
 /* Tab1_DS.js (DS for District Selected) */
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import './Tab1_DS.css'; // CSS 파일을 추가해줍니다.
 import Tab2_DS from '../Tab2_DS/Tab2_DS'; // Tab2 컴포넌트를 불러옵니다.
+import { MyContext } from '../../MyContextProvider';
 
 import groupmembersImage from './group_members.png'
 
 
 function Tab1_DS({ openTab2_DS, isTab2_DSOpen }) {
   const [showTab2_DS] = useState(false); // showTab2_DS 상태를 설정합니다.
-  const [activeGroupBox_DSIndex, setActiveGroupBox_DSIndex] = useState(-1); // 클릭한 그룹 박스의 인덱스를 저장
+  // const [activeGroupBox_DSIndex, setActiveGroupBox_DSIndex] = useState(-1); // 클릭한 그룹 박스의 인덱스를 저장
+  const { selectedLocations, activeGroupBox_DSIndex, setActiveGroupBox_DSIndex } = useContext(MyContext);
 
   // Tab2가 닫혔을 때 active 상태 해제
   useEffect(() => {
@@ -39,22 +41,24 @@ function Tab1_DS({ openTab2_DS, isTab2_DSOpen }) {
       duration: '7월 nn일 - 8월 nn일',
     },
     {
-        name: 'Group 2',
-        member: 'Boo',
-        memberCount: 7,
-        duration: '7월 nn일 - 8월 nn일',
-      },
+      name: 'Group 2',
+      member: 'Boo',
+      memberCount: 7,
+      duration: '7월 nn일 - 8월 nn일',
+    },
     // 다른 그룹 박스 데이터도 추가할 수 있습니다.
   ];
 
   return (
     <div>
       <div className="Tab1_DS">
-      {/* 사이드 메뉴 아이템들을 추가합니다 */}
-      <div className="Tab1_DSItem"><b>OO에 함께한 그룹</b></div>
-      {/* 필요한 만큼 메뉴를 추가할 수 있습니다 */}
-      <div className="Tab1_DSContents">
-        {/* 스크롤 가능한 내용을 추가해주세요 */}
+        {/* 사이드 메뉴 아이템들을 추가합니다 */}
+        <span className="Tab1_DSItem">
+          <b>{selectedLocations.join(', ')}에 함께한 그룹</b>
+        </span>
+        {/* 필요한 만큼 메뉴를 추가할 수 있습니다 */}
+        <div className="Tab1_DSContents">
+          {/* 스크롤 가능한 내용을 추가해주세요 */}
           <div className="GroupBoxesContainer_DS">
             {/* 그룹 박스들을 동적으로 생성 */}
             {groupData.map((group, index) => (
@@ -77,14 +81,13 @@ function Tab1_DS({ openTab2_DS, isTab2_DSOpen }) {
                     <b>{'>'}</b>
                   </button>
                 </div>
-
-                {/* Tab2 보여주기 여부에 따라 렌더링 */}
-                {showTab2_DS && <Tab2_DS />}
               </div>
             ))}
           </div>
+        </div>
       </div>
-    </div>
+      {/* Tab2 보여주기 여부에 따라 렌더링 */}
+      {showTab2_DS && <Tab2_DS />}
     </div>
   )
 }
