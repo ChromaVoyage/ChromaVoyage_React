@@ -1,17 +1,17 @@
 import React, { useState, useContext, useEffect, useRef } from 'react';
 import './Tab2.css';
-import DatePicker from 'react-datepicker';
 import { DateRange, Calendar } from 'react-date-range';
 import { addDays } from "date-fns"
 import 'react-datepicker/dist/react-datepicker.css';
 import './DatePicker.css';
 import DaumPostcode from 'react-daum-postcode';
 import { MyContext } from '../../MyContextProvider';
+import axios from 'axios';
 import 'react-date-range/dist/styles.css'; // main css file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 
 function Tab2() {
-  const { name, setName, selectedLocations, setSelectedLocations, searchAddress, setSearchAddress } = useContext(MyContext);
+  const { name, setName, selectedLocations, setSelectedLocations, searchAddress, setSearchAddress, groupId, setGroupId } = useContext(MyContext);
   const [selectedDate, setSelectedDate] = useState(null);
   const [selectedAddress, setSelectedAddress] = useState('');
   const [showDaumPostcode, setShowDaumPostcode] = useState(false);
@@ -50,9 +50,38 @@ function Tab2() {
     setShowDaumPostcode(false);
   };
 
+  // const handleMapButtonClick = () => {
+  //   console.log("선택된 지역:", [selectedLocations]);
+  //   console.log('지역이 추가됨');
+  // };
+
   const handleMapButtonClick = () => {
-    console.log("선택된 지역:", [selectedLocations]);
-    console.log('지역이 추가됨');
+    
+    if (groupId !== undefined && groupId !== null) {
+      const startDate = state[0].startDate;
+      const endDate = state[0].endDate;
+      const requestBody = {
+        userId: 3, // 추후 바꾸어야 함
+        locationName: selectedLocations,
+        startDate: startDate.toISOString(),
+        endDate: endDate.toISOString()
+      };
+
+      console.log("요청", requestBody);
+      console.log("요청", groupId);
+  
+      axios.post(`/locations/add?group_id=${groupId}`, requestBody)
+        .then(response => {
+          console.log("일정 추가 요청 성공:", response.data);
+          // 요청이 성공한 경우 추가적인 작업 수행
+        })
+        .catch(error => {
+          console.error("일정 추가 요청 실패:", error);
+          // 요청이 실패한 경우 에러 처리
+        });
+    } else {
+      console.error("groupId is invalid"); // groupId가 유효하지 않을 경우에 대한 처리
+    }
   };
 
   const handleDateRangeChange = (ranges) => {
@@ -63,6 +92,12 @@ function Tab2() {
   useEffect(() => {
     console.log('선택된 모든 지역:', selectedLocations);
   }, [selectedLocations]);
+
+  useEffect(() => {
+    console.log('그룹__ID:', groupId); // 그룹 ID 출력
+  }, [groupId]);
+
+
 
   return (
     <div>

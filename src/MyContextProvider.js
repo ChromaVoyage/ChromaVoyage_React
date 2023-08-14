@@ -9,10 +9,14 @@ export const MyContextProvider = ({ children }) => {
   const [selectedLocations, setSelectedLocations] = useState([]);
   const [searchAddress, setSearchAddress] = useState('');
   const [selectedPlaces, setSelectedPlaces] = useState([]);
+  const [groupId, setGroupId] = useState('');
+  const [apiPlaces, setApiPlaces] = useState([]);
+  const [apiPlacesClick, setApiPlacesClick] = useState(false);
 
   return (
     <MyContext.Provider value={{ name, setName, selectedLocations, 
-    setSelectedLocations, searchAddress, setSearchAddress, selectedPlaces, setSelectedPlaces }}>
+    setSelectedLocations, searchAddress, setSearchAddress, selectedPlaces, setSelectedPlaces
+    , groupId, setGroupId, apiPlaces, setApiPlaces, apiPlacesClick, setApiPlacesClick}}>
       {children}
     </MyContext.Provider>
   );
