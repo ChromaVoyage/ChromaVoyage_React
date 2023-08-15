@@ -12,11 +12,22 @@ export const MyContextProvider = ({ children }) => {
   const [groupId, setGroupId] = useState('');
   const [apiPlaces, setApiPlaces] = useState([]);
   const [apiPlacesClick, setApiPlacesClick] = useState(false);
+  const [clickLocationName, setClickLocationName] = useState('');
+  const [startDate, setStartDate] = useState('');
+  const [endDate, setEndDate] = useState('');
+  const [coloringLocationId, setColoringLocationId] = useState('');
+  const [locationId, setLocationId] = useState('');
+  const [clickGroupId, setClickGroupId] = useState(-1);
 
   return (
     <MyContext.Provider value={{ name, setName, selectedLocations, 
     setSelectedLocations, searchAddress, setSearchAddress, selectedPlaces, setSelectedPlaces
-    , groupId, setGroupId, apiPlaces, setApiPlaces, apiPlacesClick, setApiPlacesClick}}>
+    , groupId, setGroupId, apiPlaces, setApiPlaces, 
+    apiPlacesClick, setApiPlacesClick, clickLocationName, 
+    setClickLocationName, startDate, setStartDate , endDate, setEndDate,
+    coloringLocationId, setColoringLocationId,
+    locationId, setLocationId,
+    clickGroupId, setClickGroupId}}>
       {children}
     </MyContext.Provider>
   );

@@ -11,8 +11,12 @@ const KakaoMap2 = () => {
     setSelectedLocations,
     apiPlaces,
     setApiPlaces,
-    apiPlacesClick, 
-    setApiPlacesClick
+    apiPlacesClick,
+    setApiPlacesClick,
+    clickLocationName,
+    setClickLocationName,
+    clickGroupId,
+    setClickGroupId,
   } = useContext(MyContext);
 
   const geojson = require('./TL_SCCO_SIG.json');
@@ -21,6 +25,7 @@ const KakaoMap2 = () => {
   const [selectedMarkers, setSelectedMarkers] = useState([]);
 
   useEffect(() => {
+    // 그룹의 위치를 가져와서 apiPlaces 상태 업데이트
     const fetchData = async () => {
       try {
         const response = await fetch('/locations', {
@@ -32,11 +37,10 @@ const KakaoMap2 = () => {
             userId: 3, // 사용자 아이디를 적절히 설정해주세요
           }),
         });
-
+  
         if (response.ok) {
           const data = await response.json();
           setApiPlaces(data);
-          
         } else {
           console.error('지역 데이터를 가져오는데 오류 발생:', response.status);
         }
@@ -44,11 +48,14 @@ const KakaoMap2 = () => {
         console.error('지역 데이터를 가져오는데 오류 발생:', error);
       }
     };
-
-    fetchData();
-  }, []);
+  
+    if (clickGroupId === -1) {
+      fetchData();
+    }
+  }, [clickGroupId]);
 
   useEffect(() => {
+    // 지도 초기화 및 폴리곤 표시
     const data = geojson.features;
     const mapContainer = document.getElementById('pollution-map');
     const mapOption = {
@@ -121,22 +128,19 @@ const KakaoMap2 = () => {
               prev.filter((location) => location !== name)
             );
           }
-        }
-
-        else if (!polygon.isFilled){
+        } else if (!polygon.isFilled) {
           setName(name);
           setSelectedLocations((prev) => [...prev, name]);
           polygon.isFilled = true;
           setApiPlacesClick(true);
-        }
-
-        else {
+          setClickLocationName(name);
+        } else {
           polygon.isFilled = false;
-            setSelectedLocations((prev) =>
-              prev.filter((location) => location !== name)
-            );
-            setApiPlacesClick(true);
-
+          setSelectedLocations((prev) =>
+            prev.filter((location) => location !== name)
+          );
+          setApiPlacesClick(true);
+          setClickLocationName(name);
         }
       });
 
@@ -153,44 +157,79 @@ const KakaoMap2 = () => {
   }, [setName, setSelectedLocations, selectedPlaces, apiPlaces]);
 
   useEffect(() => {
-    const map = mapRef.current;
-    if (!map) return;
-
-    selectedPolygons.forEach((item) => {
-      const { name, polygon } = item;
-      const isApiPlace = apiPlaces.includes(name);
-      polygon.setOptions({ fillColor: isApiPlace ? '#7A4495' : '#fff' });
-
-      if (selectedLocations.includes(name)) {
-        polygon.setOptions({ fillColor: '#7A4495' });
+    // 노란색으로 그룹 위치를 표시
+    const displayGroupLocations = async () => {
+      if (clickGroupId !== -1) {
+        try {
+          const response = await fetch(`/locations/group?group_id=${clickGroupId}`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              userId: 3, // 사용자 ID에 맞게 변경해주세요
+            }),
+          });
+  
+          if (response.ok) {
+            const data = await response.json();
+            setSelectedPolygons((prevPolygons) => {
+              if (prevPolygons === null) {
+                return [];
+              }
+              
+              const updatedPolygons = prevPolygons.map((item) => {
+                if (data.includes(item.name)) {
+                  item.polygon.setOptions({
+                    fillColor: '#FFFF00', // 노란색
+                  });
+                } else if (!selectedLocations.includes(item.name)) {
+                  item.polygon.setOptions({
+                    fillColor: '#fff',
+                  });
+                }
+                return item;
+              });
+              return updatedPolygons;
+            });
+          } else {
+            console.error('지역 데이터를 가져오는데 오류 발생:', response.status);
+          }
+        } catch (error) {
+          console.error('지역 데이터를 가져오는데 오류 발생:', error);
+        }
       }
-    });
-  }, [selectedLocations, selectedPolygons, apiPlaces]);
+    };
+  
+    displayGroupLocations();
+  }, [clickGroupId, setSelectedPolygons, selectedLocations]);
 
   useEffect(() => {
-    selectedMarkers.forEach((marker) => {
-      marker.setMap(null);
-    });
+    // ...
 
-    const displayPlace = (address, x, y) => {
-      const marker = new kakao.maps.Marker({
-        position: new kakao.maps.LatLng(y, x),
-        title: address,
+    const displayMarkers = () => {
+      selectedMarkers.forEach((marker) => {
+        marker.setMap(null);
       });
 
-      kakao.maps.event.addListener(marker, 'click', function () {
-        console.log('선택한 장소:', marker.getTitle());
-      });
+      selectedPlaces.forEach((place) => {
+        const { placeName, latitude, longtitude } = place;
+        const marker = new kakao.maps.Marker({
+          position: new kakao.maps.LatLng(longtitude, latitude),
+          title: placeName,
+        });
 
-      marker.setMap(mapRef.current);
-      setSelectedMarkers((prev) => [...prev, marker]);
+        kakao.maps.event.addListener(marker, 'click', function () {
+          console.log('선택한 장소:', marker.getTitle());
+        });
+
+        marker.setMap(mapRef.current);
+        setSelectedMarkers((prev) => [...prev, marker]);
+      });
     };
 
-    selectedPlaces.forEach((place) => {
-      const { address, x, y } = place;
-      displayPlace(address, x, y);
-    });
-  }, [selectedPlaces, selectedMarkers]);
+    displayMarkers();
+  }, [selectedPlaces]);
 
   return (
     <div

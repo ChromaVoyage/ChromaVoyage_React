@@ -9,7 +9,7 @@ function Tab1({ openTab2, isTab2Open }) {
   const [showTab2, setShowTab2] = useState(false);
   const [activeGroupBoxIndex, setActiveGroupBoxIndex] = useState(-1);
   const [groupData, setGroupData] = useState([]);
-  const {groupId, setGroupId } = useContext(MyContext);
+  const {groupId, setGroupId, clickGroupId, setClickGroupId } = useContext(MyContext);
 
   useEffect(() => {
     axios.post('/groups/my', {
@@ -26,6 +26,7 @@ function Tab1({ openTab2, isTab2Open }) {
   useEffect(() => {
     if (!isTab2Open) {
       setActiveGroupBoxIndex(-1);
+      setClickGroupId(-1)
     }
   }, [isTab2Open]);
 
@@ -36,12 +37,20 @@ function Tab1({ openTab2, isTab2Open }) {
   };
 
   const handleGroupBoxClick = (index) => {
-    if (showTab2 && activeGroupBoxIndex === index) {
+    if (activeGroupBoxIndex === index) {
+      setClickGroupId(-1)
+      setActiveGroupBoxIndex(-1);
+    }
+    else if (showTab2 && activeGroupBoxIndex === index) {
       setShowTab2(false); // 그룹 박스 클릭 시 Tab2 렌더링 해제
     } else {
+      const clickedGroup = groupData[index]; // 클릭한 그룹의 정보를 가져옴
+      console.log("클릭한 그룹 ID:", clickedGroup.groupId); // 그룹 ID를 콘솔에 출력
+      setClickGroupId(clickedGroup.groupId);
       setActiveGroupBoxIndex(index);
     }
   };
+  
 
   return (
     <div>
