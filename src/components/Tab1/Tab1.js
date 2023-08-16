@@ -11,7 +11,7 @@ function Tab1({ openTab2, isTab2Open }) {
   const [showTab2, setShowTab2] = useState(false);
   const [activeGroupBoxIndex, setActiveGroupBoxIndex] = useState(-1);
   const [groupData, setGroupData] = useState([]);
-  const {groupId, setGroupId, clickGroupId, setClickGroupId } = useContext(MyContext);
+  const {groupId, setGroupId, clickGroupId, setClickGroupId, creategroup, setcreategroup } = useContext(MyContext);
 
   // useEffect(() => {
   //   axios.post('/groups/my', {
@@ -48,7 +48,7 @@ function Tab1({ openTab2, isTab2Open }) {
     .catch(error => {
       console.error('그룹 데이터 가져오기 오류:', error);
     });
-  }, []);
+  }, [creategroup]);
 
   useEffect(() => {
     if (!isTab2Open) {
