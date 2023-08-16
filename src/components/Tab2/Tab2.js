@@ -12,7 +12,7 @@ import 'react-date-range/dist/theme/default.css'; // theme css file
 
 function Tab2() {
   const { name, setName, selectedLocations, setSelectedLocations, searchAddress, setSearchAddress, groupId, setGroupId } = useContext(MyContext);
-  const [selectedDate, setSelectedDate] = useState(null);
+  const [selectedDate, setSelectedDate] = useState('');
   const [selectedAddress, setSelectedAddress] = useState('');
   const [showDaumPostcode, setShowDaumPostcode] = useState(false);
   const [showCalendar, setShowCalendar] = useState(false);

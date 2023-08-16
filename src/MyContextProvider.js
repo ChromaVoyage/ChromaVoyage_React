@@ -18,6 +18,8 @@ export const MyContextProvider = ({ children }) => {
   const [coloringLocationId, setColoringLocationId] = useState('');
   const [locationId, setLocationId] = useState('');
   const [clickGroupId, setClickGroupId] = useState(-1);
+  const [creategroup, setcreategroup] = useState([])
+  
 
   return (
     <MyContext.Provider value={{ name, setName, selectedLocations, 
@@ -27,7 +29,8 @@ export const MyContextProvider = ({ children }) => {
     setClickLocationName, startDate, setStartDate , endDate, setEndDate,
     coloringLocationId, setColoringLocationId,
     locationId, setLocationId,
-    clickGroupId, setClickGroupId}}>
+    clickGroupId, setClickGroupId,
+    creategroup, setcreategroup}}>
       {children}
     </MyContext.Provider>
   );

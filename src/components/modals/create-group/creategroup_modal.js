@@ -3,7 +3,7 @@ import './creategroup_modal.css';
 
 
 
-function Group_Modal({isOpen, onClose, inputGroupValue, inputEmailValue, handleEmailChange, handleChange, handleEmailSubmit, handleSubmit}){
+function Group_Modal({isOpen, onClose, inputGroupValue, inputEmailValue, emailList, handleEmailChange, handleChange, handleEmailSubmit, handleRemoveEmail, handleSubmit}){
   if (!isOpen) return null;
 
   return (
@@ -20,7 +20,7 @@ function Group_Modal({isOpen, onClose, inputGroupValue, inputEmailValue, handleE
             type="text"
             value={inputGroupValue}
             onChange={handleChange}
-            placeholder="Enter something..."
+            placeholder="그룹 이름을 입력하세요"
           />
         </div>
         <div>
@@ -29,9 +29,19 @@ function Group_Modal({isOpen, onClose, inputGroupValue, inputEmailValue, handleE
             type="text"
             value={inputEmailValue}
             onChange={handleEmailChange}
-            placeholder="Enter something..."
+            placeholder="이메일을 입력하세요"
           />
           <button className="buttonGroupEmail" onClick={handleEmailSubmit}>입력</button>
+        </div>
+        <div>
+          <p>추가한 이메일</p>
+          <ul>
+            {emailList.map((inputEmailValue, index) => (
+              <li key={index}>{inputEmailValue}
+               <button className="buttonGroupEmailRemove" onClick={() => handleRemoveEmail(index)}>x</button>
+              </li>
+            ))}
+          </ul>
         </div>
         <button className="buttonSubmit" onClick={handleSubmit}>확인</button>
 

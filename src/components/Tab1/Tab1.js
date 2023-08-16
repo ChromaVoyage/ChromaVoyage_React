@@ -4,12 +4,16 @@ import Tab2 from '../Tab2/Tab2';
 import groupmembersImage from './group_members.png';
 import axios from 'axios';
 import { MyContext } from '../../MyContextProvider';
+import CreategroupModal from '../modals/create-group/creategroup_modal'; // 그룹 생성 모달을 불러옴
 
 function Tab1({ openTab2, isTab2Open }) {
   const [showTab2, setShowTab2] = useState(false);
   const [activeGroupBoxIndex, setActiveGroupBoxIndex] = useState(-1);
   const [groupData, setGroupData] = useState([]);
-  const {groupId, setGroupId, clickGroupId, setClickGroupId } = useContext(MyContext);
+  const {groupId, setGroupId, clickGroupId, setClickGroupId, creategroup, setcreategroup } = useContext(MyContext);
+
+  const [isCreategroupModalOpen, setIsCreategroupModalOpen] = useState(false); // 그룹 생성 모달 상태 추가
+
 
   useEffect(() => {
     axios.post('/groups/my', {
@@ -21,7 +25,7 @@ function Tab1({ openTab2, isTab2Open }) {
     .catch(error => {
       console.error('그룹 데이터 가져오기 오류:', error);
     });
-  }, []);
+  }, [creategroup]);
 
   useEffect(() => {
     if (!isTab2Open) {
@@ -49,6 +53,21 @@ function Tab1({ openTab2, isTab2Open }) {
       setClickGroupId(clickedGroup.groupId);
       setActiveGroupBoxIndex(index);
     }
+  };
+
+  const handleCreategroupModalOpen = () => { // 그룹 생성 모달 열기 함수 추가
+    setIsCreategroupModalOpen(true);
+  };
+
+  // 그룹 생성 모달 닫기 함수
+  const handleCreategroupModalClose = () => {
+    setIsCreategroupModalOpen(false);
+  };
+
+  const handleCreateGroupSubmit = (newGroup) => { // 그룹 생성 완료 후 실행할 함수 추가
+    // 새로운 그룹 데이터를 groupData에 추가
+    setGroupData([...groupData, newGroup]);
+    setIsCreategroupModalOpen(false); // 모달 닫기
   };
   
 
@@ -80,6 +99,11 @@ function Tab1({ openTab2, isTab2Open }) {
             ))}
           </div>
         </div>
+        <CreategroupModal
+          isOpen={isCreategroupModalOpen}
+          onClose={handleCreategroupModalClose}
+          handleSubmit={handleCreateGroupSubmit}
+        />
       </div>
       {showTab2 && <Tab2 />}
     </div>
