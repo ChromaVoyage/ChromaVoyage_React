@@ -16,7 +16,9 @@ function Nav() {
   const [isMypageModalOpen, setIsMypageModalOpen] = useState(false);
   const [inputGroupValue, setGroupInputValue] = useState('');
   const [inputEmailValue, setEmailInputValue] = useState('');
-
+  const [emailList, setEmailList] = useState([]);
+  const [inputNicknameValue, setNicknameInputValue] = useState('');
+  const [inputUserEmailValue, setUserEmailInputValue] = useState('');
 
   const handleOpenCreategroupModal = () => {
     setIsCreategroupModalOpen(true);
@@ -34,12 +36,17 @@ function Nav() {
     setGroupInputValue(event.target.value);
   };
 
-  const handleEmailSubmit = () => { //로직 구현 필요
-    // 입력한 값을 처리하거나 저장하는 로직을 작성합니다.
-    console.log('Input Value:', inputEmailValue);
+  const handleEmailSubmit = () => { //서버 전달 로직 필요?
+    if(inputEmailValue) {
+      setEmailList([...emailList,inputEmailValue]);
+      setEmailInputValue('');
+    }
   };
-
-  const handleSubmit = () => { //로직 구현 필요
+  const handleRemoveEmail = (index) => {
+    const updatedList = emailList.filter((_, i) => i !== index);
+    setEmailList(updatedList);
+  };
+  const handleSubmit = () => { //서버 전달 로직 구현 필요
     // 입력한 값을 처리하거나 저장하는 로직을 작성합니다.
     console.log('Input Value:', inputGroupValue);
     setIsCreategroupModalOpen(false);
@@ -52,6 +59,19 @@ function Nav() {
   const handleCloseMypageModal = () => {
     setIsMypageModalOpen(false);
   };
+  const handleNicknameChange = (event) => {
+    setNicknameInputValue(event.target.value);
+  };
+  const handleUserEmailChange = (event) => {
+    setUserEmailInputValue(event.target.value);
+  };
+  const handleMypageSubmit = () => {
+    /*서버 전달 로직 수정 필요*/
+    console.log('Input Value:', inputNicknameValue);
+    setIsMypageModalOpen(false);
+
+  }
+
 
   return (
     <div className="navContainer">
@@ -69,7 +89,7 @@ function Nav() {
           {/* 이미지를 클릭하면 팝업이 열리도록 이벤트를 추가 */}
           <img src={creategroupImage} alt='CreateGroup' className="navbarImage" onClick={handleOpenCreategroupModal} />
           {/* 팝업 모달 */}
-          <CreategroupModal isOpen={isCreategroupModalOpen} onClose={handleCloseCreategroupModal} inputGroupValue={inputGroupValue} inputEmailValue={inputEmailValue} handleEmailChange={handleEmailChange} handleChange={handleChange} handleEmailSubmit={handleEmailSubmit} handleSubmit={handleSubmit} />
+          <CreategroupModal isOpen={isCreategroupModalOpen} onClose={handleCloseCreategroupModal} inputGroupValue={inputGroupValue} inputEmailValue={inputEmailValue} emailList={emailList} handleEmailChange={handleEmailChange} handleChange={handleChange} handleEmailSubmit={handleEmailSubmit} handleRemoveEmail={handleRemoveEmail} handleSubmit={handleSubmit} />
           <span onClick={handleOpenCreategroupModal} className="navbarMenu">그룹<br/>생성하기</span>
 
           {/* 메뉴들 */}
@@ -81,7 +101,7 @@ function Nav() {
 
           {/* 마이페이지 */}
           <img src={userImage} alt='User' className="navbarImage" onClick={handleOpenMypageModal} />
-          <MypageModal isOpen={isMypageModalOpen} onClose={handleCloseMypageModal} />
+          <MypageModal isOpen={isMypageModalOpen} onClose={handleCloseMypageModal} inputNicknameValue={inputNicknameValue} inputUserEmailValue={inputUserEmailValue} handleUserEmailChange={handleUserEmailChange} handleNicknameChange={handleNicknameChange} handleMypageSubmit={handleMypageSubmit}  />
         </div>
       </div>
     </div>
