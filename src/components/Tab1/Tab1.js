@@ -13,18 +13,6 @@ function Tab1({ openTab2, isTab2Open }) {
   const [groupData, setGroupData] = useState([]);
   const {groupId, setGroupId, clickGroupId, setClickGroupId, creategroup, setcreategroup } = useContext(MyContext);
 
-  // useEffect(() => {
-  //   axios.post('/groups/my', {
-  //     userId: 3
-  //   })
-  //   .then(response => {
-  //     setGroupData(response.data);
-  //   })
-  //   .catch(error => {
-  //     console.error('그룹 데이터 가져오기 오류:', error);
-  //   });
-  // }, []);
-
   useEffect(() => {
     axios.post('/groups/my', {
       userId: 3
@@ -182,7 +170,7 @@ function Tab1({ openTab2, isTab2Open }) {
           </div>
         </div>
       </div>
-      {showTab2 && <Tab2 />}
+      {/* {showTab2 && <Tab2 />} */}
     </div>
   );
 }

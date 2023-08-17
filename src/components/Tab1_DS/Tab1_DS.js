@@ -92,7 +92,10 @@ function Tab1_DS({ openTab2_DS, isTab2_DSOpen }) {
                   </span>
                 </div>
                 <div className="RightContent_DS">
-                  <span className="Duration_DS">{group.startDate} - {group.endDate}</span>
+                  <span className="Duration_DS">
+                    {/* {group.startDate} - {group.endDate} */}
+                    {group.startDate.slice(2).replace(/-/g, '')} <br /> - {group.endDate.slice(2).replace(/-/g, '')}
+                  </span>
                   <button className={`showTab2Button_DS ${showTab2_DS ? 'active' : ''}`} onClick={() => handleShowTab2_DS(group.startDate, group.endDate, group.coloringLocationId, group.locationId, group.groupId)}>
                     <b>{'>'}</b>
                   </button>

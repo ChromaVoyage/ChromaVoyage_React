@@ -109,7 +109,8 @@
   .groupmembersText {
     position: relative;
     top: -5px; /* 음수 값을 써줘서 위로 조금 올라가게 함. */
-    font-size: small;
+    font-size: 0.78rem;
+    left: 2px;
     color: gray;
   }
 
