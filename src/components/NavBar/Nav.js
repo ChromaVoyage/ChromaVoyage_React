@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import './Nav.css';
 import CreategroupModal from '../modals/create-group/creategroup_modal';
 import MypageModal from '../modals/my-page/mypage_modal';
+import LogoutButton from '../LoginPage/Logout';
 //JSX에서 컴포넌트 이름은 항상 대문자로 시작해야 함. (ex. CreatgroupModal / MypageModal)
 
 //로고 이미지 파일 경로
@@ -64,6 +65,7 @@ function Nav() {
         <hr className="navbarLine" />
 
         <div className="navBottomContent">
+          <LogoutButton />
         
           {/* 그룹 생성하기 */}
           {/* 이미지를 클릭하면 팝업이 열리도록 이벤트를 추가 */}
