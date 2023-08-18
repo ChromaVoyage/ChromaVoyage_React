@@ -9,21 +9,10 @@ import { MyContext } from '../../MyContextProvider';
 
 function Tab1({ openTab2, isTab2Open }) {
   const [showTab2, setShowTab2] = useState(false);
-  const [activeGroupBoxIndex, setActiveGroupBoxIndex] = useState(-1);
+  // const [activeGroupBoxIndex, setActiveGroupBoxIndex] = useState(-1);
   const [groupData, setGroupData] = useState([]);
-  const {groupId, setGroupId, clickGroupId, setClickGroupId, creategroup, setcreategroup } = useContext(MyContext);
+  const {groupId, setGroupId, clickGroupId, setClickGroupId, creategroup, setcreategroup, activeGroupBoxIndex, setActiveGroupBoxIndex } = useContext(MyContext);
 
-  // useEffect(() => {
-  //   axios.post('/groups/my', {
-  //     userId: 3
-  //   })
-  //   .then(response => {
-  //     setGroupData(response.data);
-  //   })
-  //   .catch(error => {
-  //     console.error('그룹 데이터 가져오기 오류:', error);
-  //   });
-  // }, []);
 
   useEffect(() => {
     axios.post('/groups/my', {
@@ -141,6 +130,7 @@ function Tab1({ openTab2, isTab2Open }) {
     })
     .then(response => {
       if (response.data.ResponseCode === '200') {
+        setActiveGroupBoxIndex(-1);
         adjustGroupOrder(groupId, newPinValue); // 순서 조정
       } else {
         console.error('즐겨찾기 업데이트 오류:', response.data.description);

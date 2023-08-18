@@ -93,7 +93,7 @@
   .GroupName {
     position: relative;
     top: 0%;
-    font-size: x-large;
+    font-size: 20px;
   }
 
   .GroupMembers {
@@ -102,14 +102,15 @@
   }
 
   .groupmembersImage {
-    width: 40px;
+    width: 30px;
     height: auto;
   }
 
   .groupmembersText {
     position: relative;
     top: -5px; /* 음수 값을 써줘서 위로 조금 올라가게 함. */
-    font-size: small;
+    font-size: 0.78rem;
+    left: 2px;
     color: gray;
   }
 

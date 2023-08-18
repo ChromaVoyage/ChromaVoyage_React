@@ -13,10 +13,12 @@
     flex-direction: column;
     border-radius: 0px 20px 20px 0px;
     box-shadow: 0.2px 0.2px 15px gray;
+    overflow-y: auto;
   }
   
   .Tab2_DSItem {
-    padding: 15px;
+    padding: 5px;
+    margin-left: 5px;
     padding-bottom: 10px;
     border-bottom: 1px solid rgba(130, 33, 254, 0.25);
     cursor: pointer;
@@ -27,7 +29,7 @@
     margin: 10px 0px 20px 0px;
     height: auto;
     background-color: #ffffff;
-    overflow-y: scroll;
+    
   }
 
   .Tab2_DSText {
@@ -110,6 +112,8 @@
   z-index: 999;
 }
 
+
+
 .modal-content {
   background-color: white;
   padding: 20px;
@@ -118,7 +122,36 @@
   width: 90%; /* 너비 */
   max-height: 80vh; /* 최대 높이 */
   overflow-y: auto; /* 스크롤 가능하도록 설정 */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.modal-title {
+  width: 100%;
+  font-size:20px;
+  font-weight: bold;
+  padding: 5px;
+  
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(130, 33, 254, 0.25);
+}
+
+.modal-close {
+  cursor: pointer;
+  font-size: 25px;
+  border: none;
+  color: #000000;
+  background-color: transparent;
+  
+}
+
+
 
 .modal-image-list {
   display: flex;
@@ -127,6 +160,7 @@
 }
 
 .modal-image-item {
+  position: relative;
   width: calc(16.66% - 10px); /* 가로로 한 줄에 약 6개, 간격 포함 */
   text-align: center;
 }
@@ -135,9 +169,91 @@
   max-width: 100%;
   height: auto;
   border: 1px solid #ccc;
+  border-radius: 2px;
 }
 
 .modal-image-name {
   font-size: 12px;
   margin-top: 5px;
 }
+
+.modal-image-delete {
+  position: absolute;
+  top: -5px; /* 기존 값: 5px */
+  right: -5px; /* 기존 값: 5px */
+  font-size: 18px;
+  color: #666;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+}
+
+.tab-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  margin-right: 10px;
+}
+
+.edit-button-container {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  margin-top: 10px;
+  flex-shrink: 0; /* 수정 버튼이 넘치지 않도록 설정 */
+}
+
+.edit-button {
+  margin-left: 110px;
+  margin-top: 9px;
+  height: 25px;
+  text-align: center;
+  font-size: x-small;
+  background-color: #8221FE;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 5px 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+
+.confirmodal{
+  font-size: small;
+  width: 79px;
+  height: 28px;
+  border: none;
+  background-color: #8221FE;
+  color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+}
+
+.confirmodal:hover {
+  background-color: #6A0ECD;
+}
+
+  .file-input-container {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 20px;
+   
+  }
+  
+  .file-input-label {
+    font-size: small;
+    padding: 5px 10px;
+    font-size: 14px;
+    background-color: #8221FE;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  
+  .file-input-label:hover {
+    background-color: #6A0ECD;
+  }

@@ -30,7 +30,7 @@ const MapComponent = () => {
         placeName: searchResults[index].place_name,
         address: searchResults[index].address_name,
         latitude: searchResults[index].x,
-        longtitude: searchResults[index].y,
+        longitude: searchResults[index].y,
       };
   
       console.log(place);

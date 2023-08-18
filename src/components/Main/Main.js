@@ -10,14 +10,14 @@ import KakaoMap2 from '../../KakaoMap2';
 import { MyContext } from '../../MyContextProvider'; // import the context
 
 function Main() {
-  const { apiPlacesClick, setApiPlacesClick} = useContext(MyContext); // Get the selectedLocations from the context
+  const { apiPlacesClick, setApiPlacesClick, isTab2_DSOpen, setIsTab2_DSOpen, selectedPlaces, setSelectedPlaces, setSelectedLocations} = useContext(MyContext); // Get the selectedLocations from the context
 
   const [isTab1Open, setIsTab1Open] = useState(false);
   const [isTab2Open, setIsTab2Open] = useState(false);
 
   //DS (District Selected 시)
   const [isTab1_DSOpen, setIsTab1_DSOpen] = useState(false);
-  const [isTab2_DSOpen, setIsTab2_DSOpen] = useState(false);
+  // const [isTab2_DSOpen, setIsTab2_DSOpen] = useState(false);
 
   useEffect(() => {
     if (apiPlacesClick === false) {
@@ -44,6 +44,9 @@ function Main() {
   };
 
   const handleToggleTabs = () => {
+    setSelectedPlaces([]);
+    setSelectedLocations([]);
+  
     if (!isTab1Open && !isTab2Open && apiPlacesClick === false) {
       setIsTab1Open(true);
       setIsTab1_DSOpen(false);
@@ -61,6 +64,7 @@ function Main() {
       setIsTab1_DSOpen(!isTab1_DSOpen);
       setApiPlacesClick(false); // Tab1_DS가 닫힐 때 apiPlacesClick 값을 false로 변경
     }
+
   }
 
 
