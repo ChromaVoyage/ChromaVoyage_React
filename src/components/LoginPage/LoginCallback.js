@@ -23,16 +23,16 @@ const LoginCallback = () => { //왜 props?
                     localStorage.setItem('picture',res.data.result.picture);
                     localStorage.setItem('name', res.data.result.name);
 
-                    const storedUserId = localStorage.getItem('userId');
-        const storedEmail = localStorage.getItem('email');
-        const storedPicture = localStorage.getItem('picture');
-        const storedName = localStorage.getItem('name');
+        //             const storedUserId = localStorage.getItem('userId');
+        // const storedEmail = localStorage.getItem('email');
+        // const storedPicture = localStorage.getItem('picture');
+        // const storedName = localStorage.getItem('name');
 
-        console.log("Stored userId:", storedUserId);
-        console.log("Stored email:", storedEmail);
-        console.log("Stored picture:", storedPicture);
-        console.log("Stored name:", storedName);
-                    navigate("/");
+        // console.log("Stored userId:", storedUserId);
+        // console.log("Stored email:", storedEmail);
+        // console.log("Stored picture:", storedPicture);
+        // console.log("Stored name:", storedName);
+                    navigate("/main");
             }).catch((err) => {
                 console.log(err.response.data);
             });
