@@ -54,3 +54,8 @@
   .NickName {
     text-align: left;
   }
+  .ProfileImage {
+    width: 15vh; 
+    height: 'auto'
+  }
+

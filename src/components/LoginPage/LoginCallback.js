@@ -9,9 +9,6 @@ const LoginCallback = () => { //왜 props?
 
     useEffect(() => {
         const googleLogin = async () => {
-            //const params = {
-            //    code : code,
-            //}
             await axios({
                 method: "GET",
                 url: `/login?code=${code}`,
