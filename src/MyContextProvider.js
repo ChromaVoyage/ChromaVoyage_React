@@ -19,6 +19,9 @@ export const MyContextProvider = ({ children }) => {
   const [locationId, setLocationId] = useState('');
   const [clickGroupId, setClickGroupId] = useState(-1);
   const [creategroup, setcreategroup] = useState([])
+  const [mapDisplayMarker, setMapDisplayMarker] = useState([])
+  const [isTab2_DSOpen, setIsTab2_DSOpen] = useState(false);
+  const [activeGroupBoxIndex, setActiveGroupBoxIndex] = useState(-1);
   
 
   return (
@@ -30,7 +33,12 @@ export const MyContextProvider = ({ children }) => {
     coloringLocationId, setColoringLocationId,
     locationId, setLocationId,
     clickGroupId, setClickGroupId,
-    creategroup, setcreategroup}}>
+    creategroup, setcreategroup,
+    mapDisplayMarker, setMapDisplayMarker,
+    isTab2_DSOpen, setIsTab2_DSOpen,
+    activeGroupBoxIndex, setActiveGroupBoxIndex
+
+    }}>
       {children}
     </MyContext.Provider>
   );

@@ -19,7 +19,7 @@ function Tab1_DS({ openTab2_DS, isTab2_DSOpen }) {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          userId: 3,
+          userId: localStorage.getItem('userId'),
           locationName: clickLocationName,
         }),
       })
@@ -88,7 +88,7 @@ function Tab1_DS({ openTab2_DS, isTab2_DSOpen }) {
                   <span className="GroupName_DS"><b>{group.groupName}</b></span>
                   <span className="GroupMembers_DS">
                     <img src={groupmembersImage} alt="GroupMembers_DS" className="groupmembersImage_DS" />
-                    <span className="groupmembersText_DS"> <b>{group.groupMembers[0]}</b> 외 {group.groupMembers.length - 1}명</span>
+                    <span className="groupmembersText_DS"> <b>{group.groupMembers[0]}</b> <br></br>외 {group.groupMembers.length - 1}명</span>
                   </span>
                 </div>
                 <div className="RightContent_DS">
@@ -100,7 +100,7 @@ function Tab1_DS({ openTab2_DS, isTab2_DSOpen }) {
                     <b>{'>'}</b>
                   </button>
                 </div>
-                {showTab2_DS && <Tab2_DS />}
+                {/* {showTab2_DS && <Tab2_DS />} */}
               </div>
             ))}
           </div>

@@ -61,7 +61,7 @@ function Tab2() {
       const startDate = state[0].startDate;
       const endDate = state[0].endDate;
       const requestBody = {
-        userId: 3, // 추후 바꾸어야 함
+        userId: localStorage.getItem('userId'), // 추후 바꾸어야 함
         locationName: selectedLocations,
         startDate: startDate.toISOString(),
         endDate: endDate.toISOString()
@@ -73,6 +73,7 @@ function Tab2() {
       axios.post(`/locations/add?group_id=${groupId}`, requestBody)
         .then(response => {
           console.log("일정 추가 요청 성공:", response.data);
+          window.confirm('일정이 추가되었습니다.');
           // 요청이 성공한 경우 추가적인 작업 수행
         })
         .catch(error => {
@@ -160,7 +161,7 @@ function Tab2() {
             <DaumPostcode
               onComplete={handleAddress}
             />
-            <button onClick={handleDaumPostcodeClose}>x</button>
+            <button onClick={handleDaumPostcodeClose} className="PostcodeCloseBtn">x</button>
           </div>
         )}
 

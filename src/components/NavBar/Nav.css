@@ -1,7 +1,7 @@
 .navbar {
     width: 65px;
     height: 100%;
-    background-color: #8221FE;
+    background-color: #7A4495;
     padding: 10px 0px;
     text-align: center;
     display: flex; /* CSS에서 Flexbox 레이아웃 모델을 사용하기 위한 속성 */
@@ -43,7 +43,7 @@
 }
 
 .tabToggleButton {
-    background-color: #8221FE;
+    background-color: #7A4495;
 }
 
 .navBottomContent {
@@ -56,4 +56,15 @@
     margin-bottom: 30px;
     width: 100%;
     /* background-color: aliceblue; */
+}
+
+.LogoutBtn {
+    background-color: rgba(255, 255, 255, 0.5);
+    color: #7A4495;
+    border-radius: 10px;
+    margin-top: 10px;
+    width: 80%;
+    height: 20px;
+    font-size: 0.7rem;
+    border: 0.5px solid rgba(255, 255, 255, 0.5);
 }

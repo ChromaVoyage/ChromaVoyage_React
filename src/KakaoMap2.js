@@ -17,6 +17,10 @@ const KakaoMap2 = () => {
     setClickLocationName,
     clickGroupId,
     setClickGroupId,
+    groupId, coloringLocationId, locationId,
+    isTab2_DSOpen,
+    activeGroupBoxIndex, setActiveGroupBoxIndex
+
   } = useContext(MyContext);
 
   const geojson = require('./TL_SCCO_SIG.json');
@@ -34,7 +38,7 @@ const KakaoMap2 = () => {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
-            userId: 3, // 사용자 아이디를 적절히 설정해주세요
+            userId: localStorage.getItem('userId'), // 사용자 아이디를 적절히 설정해주세요
           }),
         });
   
@@ -49,10 +53,10 @@ const KakaoMap2 = () => {
       }
     };
   
-    if (clickGroupId === -1) {
+    if (clickGroupId === -1 || activeGroupBoxIndex === -1 ) {
       fetchData();
     }
-  }, [clickGroupId]);
+  }, [clickGroupId, activeGroupBoxIndex]);
 
   useEffect(() => {
     // 지도 초기화 및 폴리곤 표시
@@ -119,6 +123,16 @@ const KakaoMap2 = () => {
             console.log('선택한 지역:', name);
             setName(name);
             setSelectedLocations((prev) => [...prev, name]);
+
+            if (isTab2_DSOpen) {
+              // Tab2_DS가 열려 있고 clickLocationName이 null이 아닌 경우에 확대
+              const bounds = new kakao.maps.LatLngBounds();
+              path.forEach((point) => bounds.extend(point));
+              mapRef.current.setBounds(bounds);
+            }
+
+
+
           } else {
             polygon.setOptions({
               fillColor: selectedLocations.includes(name) ? '#7A4495' : '#fff',
@@ -157,9 +171,9 @@ const KakaoMap2 = () => {
   }, [setName, setSelectedLocations, selectedPlaces, apiPlaces]);
 
   useEffect(() => {
-    // 노란색으로 그룹 위치를 표시
     const displayGroupLocations = async () => {
-      if (clickGroupId !== -1) {
+      if (clickGroupId !== -1 && activeGroupBoxIndex !== -1) {
+        setApiPlaces([]);
         try {
           const response = await fetch(`/locations/group?group_id=${clickGroupId}`, {
             method: 'POST',
@@ -167,7 +181,7 @@ const KakaoMap2 = () => {
               'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-              userId: 3, // 사용자 ID에 맞게 변경해주세요
+              userId: localStorage.getItem('userId'), // 사용자 ID에 맞게 변경해주세요
             }),
           });
   
@@ -177,17 +191,13 @@ const KakaoMap2 = () => {
               if (prevPolygons === null) {
                 return [];
               }
-              
+  
               const updatedPolygons = prevPolygons.map((item) => {
-                if (data.includes(item.name)) {
-                  item.polygon.setOptions({
-                    fillColor: '#FFFF00', // 노란색
-                  });
-                } else if (!selectedLocations.includes(item.name)) {
-                  item.polygon.setOptions({
-                    fillColor: '#fff',
-                  });
-                }
+                const isYellow = data.includes(item.name);
+                item.polygon.setOptions({
+                  fillColor: isYellow ? '#7A4495' : (selectedLocations.includes(item.name) ? '#7A4495' : '#fff'),
+                });
+                
                 return item;
               });
               return updatedPolygons;
@@ -202,7 +212,8 @@ const KakaoMap2 = () => {
     };
   
     displayGroupLocations();
-  }, [clickGroupId, setSelectedPolygons, selectedLocations]);
+  }, [clickGroupId, setSelectedPolygons, activeGroupBoxIndex]);
+
 
   useEffect(() => {
     // ...
@@ -213,15 +224,17 @@ const KakaoMap2 = () => {
       });
 
       selectedPlaces.forEach((place) => {
-        const { placeName, latitude, longtitude } = place;
+        const { placeName, latitude, longitude } = place;
         const marker = new kakao.maps.Marker({
-          position: new kakao.maps.LatLng(longtitude, latitude),
+          position: new kakao.maps.LatLng(longitude, latitude),
           title: placeName,
         });
 
         kakao.maps.event.addListener(marker, 'click', function () {
           console.log('선택한 장소:', marker.getTitle());
         });
+
+        console.log(longitude, latitude);
 
         marker.setMap(mapRef.current);
         setSelectedMarkers((prev) => [...prev, marker]);
