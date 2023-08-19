@@ -73,6 +73,7 @@ function Tab2() {
       axios.post(`/locations/add?group_id=${groupId}`, requestBody)
         .then(response => {
           console.log("일정 추가 요청 성공:", response.data);
+          window.confirm('일정이 추가되었습니다.');
           // 요청이 성공한 경우 추가적인 작업 수행
         })
         .catch(error => {
