@@ -8,7 +8,6 @@ import Tab1_DS from '../Tab1_DS/Tab1_DS';
 import Tab2_DS from '../Tab2_DS/Tab2_DS';
 import KakaoMap2 from '../../KakaoMap2';
 import { MyContext } from '../../MyContextProvider'; // import the context
-import LogoutButton from '../LoginPage/Logout';
 
 function Main() {
   const { apiPlacesClick, setApiPlacesClick} = useContext(MyContext); // Get the selectedLocations from the context
@@ -89,10 +88,6 @@ function Main() {
       <div>
         <KakaoMap2 />
       </div>
-      <div>
-        <LogoutButton />
-      </div>
-
     </div>
   )
 }
