@@ -11,6 +11,7 @@ function Modal({ isOpen, onClose}) {
     email: ''
   })
   const [uploadImage, setUploadImage] = useState(null); //업로드할 파일객체
+
   /*임시로 프로필 조회 - 벡엔드로부터 받아오는 거 구현하면 삭제할부분*/
   useEffect(() => {
     let nickname = localStorage.getItem('name');
@@ -23,6 +24,37 @@ function Modal({ isOpen, onClose}) {
       "email": email
     });
   }, []);
+
+  //userId 받아오기
+  const userId = localStorage.getItem('userId');
+
+  /* 백엔드로부터 프로필 조회 */
+  /*
+  useEffect(() => {
+    fetchUserProfile();
+  }, []);
+  //userid localstorage로부터 가져오는 로직추가
+    const fetchUserProfile = async () => {
+      try {
+        //userid넘기기로직 추가 -body
+        const response = await axios.get('/profiles',{data : {
+          user_id : userId
+        }}); 
+        console.log("프로필 조회 성공")
+        setProfileData({
+          ...profileData,
+          "nickname": response.data.user_name,
+          "image": response.data.profileImg_path?response.data.profileImg_path:userImg, //유저이미지값이 null이면 기본이미지로 대체
+          "email": response.data.email
+        });
+        console.log()
+      } catch (error) {
+        console.error('프로필 정보를 가져오는 중 오류 발생:', error);
+    }
+  }; 
+  */
+  if (!isOpen) return null;
+  
   //userId 받아오기
   const userId = localStorage.getItem('userId');
   if (!isOpen) return null;
