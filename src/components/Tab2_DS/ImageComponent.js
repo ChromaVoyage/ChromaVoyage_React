@@ -43,43 +43,83 @@ function ImageComponent() {
     }
   
     fetchSavedImages();
-  }, [groupId, coloringLocationId, locationId, temp]);
+  }, [groupId, coloringLocationId, locationId, selectedImages]);
 
+
+  // const handleImageChange = async (event) => {
+  //   const files = event.target.files;
+  //   if (files.length > 0) {
+  //     const selectedImageArray = Array.from(files).map((file) => {
+  //       const imageURL = URL.createObjectURL(file);
+  //       const imageName = file.name;
+  //       return { url: imageURL, name: imageName, file: file };
+  //     });
+  
+  //     // setTempSelectedImages((prevImages) => [...prevImages, ...selectedImageArray]);
+  //     setTemp(selectedImageArray);
+  
+  //     // 선택한 이미지 업로드
+  //     const formData = new FormData(); // FormData 객체를 한 번만 생성하도록 변경
+  
+  //     formData.append("group_id", groupId);
+  //     formData.append("location_id", locationId);
+  
+  //     for (const image of selectedImageArray) {
+  //       formData.append("images", image.file); // "images" 키로 이미지 파일 추가
+  //     }
+  
+  //     try {
+  //       const response = await axios.post(`/images/${coloringLocationId}`, formData, {
+  //         headers: {
+  //           "Content-Type": "multipart/form-data",
+  //         },
+  //       });
+  
+  //       console.log("이미지 업로드 성공");
+  //       console.log("응답 데이터:", response); // 응답 객체 출력
+  
+  //     } catch (error) {
+  //       console.error("Error uploading image:", error);
+  //     }
+  //   }
+  // };
 
   const handleImageChange = async (event) => {
     const files = event.target.files;
     if (files.length > 0) {
+      // 선택한 이미지들을 배열로 저장
       const selectedImageArray = Array.from(files).map((file) => {
         const imageURL = URL.createObjectURL(file);
         const imageName = file.name;
         return { url: imageURL, name: imageName, file: file };
       });
+
+      
   
-      // setTempSelectedImages((prevImages) => [...prevImages, ...selectedImageArray]);
-      setTemp(selectedImageArray);
-  
-      // 선택한 이미지 업로드
-      const formData = new FormData(); // FormData 객체를 한 번만 생성하도록 변경
-  
-      formData.append("group_id", groupId);
-      formData.append("location_id", locationId);
-  
+      // 이미지를 하나씩 업로드하도록 반복
       for (const image of selectedImageArray) {
-        formData.append("images", image.file); // "images" 키로 이미지 파일 추가
-      }
+        const formData = new FormData();
   
-      try {
-        const response = await axios.post(`/images/${coloringLocationId}`, formData, {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        });
+        formData.append("group_id", groupId);
+        formData.append("location_id", locationId);
+        formData.append("images", image.file);
   
-        console.log("이미지 업로드 성공");
-        console.log("응답 데이터:", response); // 응답 객체 출력
+        try {
+          const response = await axios.post(`/images/${coloringLocationId}`, formData, {
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+          });
   
-      } catch (error) {
-        console.error("Error uploading image:", error);
+          console.log("이미지 업로드 성공");
+          console.log("응답 데이터:", response);
+          
+  
+          // 업로드 성공 후, 화면 갱신 등 필요한 작업 수행
+  
+        } catch (error) {
+          console.error("Error uploading image:", error);
+        }
       }
     }
   };

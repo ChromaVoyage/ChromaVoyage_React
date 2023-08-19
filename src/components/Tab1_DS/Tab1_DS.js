@@ -19,7 +19,7 @@ function Tab1_DS({ openTab2_DS, isTab2_DSOpen }) {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          userId: 3,
+          userId: localStorage.getItem('userId'),
           locationName: clickLocationName,
         }),
       })

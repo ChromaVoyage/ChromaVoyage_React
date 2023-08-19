@@ -16,7 +16,7 @@ function Tab1({ openTab2, isTab2Open }) {
 
   useEffect(() => {
     axios.post('/groups/my', {
-      userId: 3
+      userId: localStorage.getItem('userId')
     })
     .then(response => {
       // 서버에서 가져온 그룹 데이터를 즐겨찾기 상태에 따라 정렬

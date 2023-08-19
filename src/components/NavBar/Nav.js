@@ -3,6 +3,7 @@ import React, { useState, useContext } from 'react';
 import './Nav.css';
 import CreategroupModal from '../modals/create-group/creategroup_modal';
 import MypageModal from '../modals/my-page/mypage_modal';
+import LogoutButton from '../LoginPage/Logout';
 import { MyContext } from '../../MyContextProvider';
 //JSX에서 컴포넌트 이름은 항상 대문자로 시작해야 함. (ex. CreatgroupModal / MypageModal)
 
@@ -54,7 +55,7 @@ function Nav() {
   try {
     // 그룹 생성 요청 데이터 준비
     const requestData = {
-      userId: 3, // 사용자 ID
+      userId: localStorage.getItem('userId'), // 사용자 ID
       group_name: inputGroupValue, // 그룹 이름
       invited_users: emailList.map(email => ({ email })), // 초대된 사용자 이메일 목록
     };
@@ -121,6 +122,7 @@ function Nav() {
         <hr className="navbarLine" />
 
         <div className="navBottomContent">
+        <LogoutButton />
         
           {/* 그룹 생성하기 */}
           {/* 이미지를 클릭하면 팝업이 열리도록 이벤트를 추가 */}

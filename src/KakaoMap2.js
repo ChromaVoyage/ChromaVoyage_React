@@ -38,7 +38,7 @@ const KakaoMap2 = () => {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
-            userId: 3, // 사용자 아이디를 적절히 설정해주세요
+            userId: localStorage.getItem('userId'), // 사용자 아이디를 적절히 설정해주세요
           }),
         });
   
@@ -181,7 +181,7 @@ const KakaoMap2 = () => {
               'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-              userId: 3, // 사용자 ID에 맞게 변경해주세요
+              userId: localStorage.getItem('userId'), // 사용자 ID에 맞게 변경해주세요
             }),
           });
   

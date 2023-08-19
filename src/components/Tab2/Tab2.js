@@ -61,7 +61,7 @@ function Tab2() {
       const startDate = state[0].startDate;
       const endDate = state[0].endDate;
       const requestBody = {
-        userId: 3, // 추후 바꾸어야 함
+        userId: localStorage.getItem('userId'), // 추후 바꾸어야 함
         locationName: selectedLocations,
         startDate: startDate.toISOString(),
         endDate: endDate.toISOString()
