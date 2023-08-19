@@ -12,12 +12,16 @@
   
   .modalContent {
     background-color: white;
-    width: 40%;
-    height: 50%;
+    width: 90vh;
+    height: 80%;
     padding: 40px;
     border-radius: 4px;
   }
-  
+
+  .line {
+    border: none;
+    border-top: 1px solid #a9a3a3;
+  }
   .closeButton {
     position: absolute;
     top: 10px;
@@ -27,7 +31,31 @@
     font-size: 24px;
     cursor: pointer;
   }
+
+  .ProfileModify {
+    text-align: left;
+  }
+  
+  .imageline {
+    font-size: small;
+    text-align: left;
+  }
+
+  .ProfileImage {
+    float: left;
+    margin-right: 10px;
+  }
+
+  .ProfileImagevalue{
+    width: 15vh; 
+    height: 'auto'
+  }
+
+  .NickName {
+    text-align: left;
+  }
   .ProfileImage {
     width: 15vh; 
     height: 'auto'
   }
+
