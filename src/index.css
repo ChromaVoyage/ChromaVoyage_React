@@ -13,7 +13,7 @@ code {
 }
 
 .map-container {
-  padding: 20px;
+  padding-top: 10px;
   text-align: center;
 }
 
@@ -46,25 +46,29 @@ code {
 }
 
 .mapsearchinput {
-    height: 30px;
-    width: 165px;
-    font-size: x-small;
-    padding-left: 10px;
-    background-color: rgba(130, 33, 254, 0.1);
-    border: 0px solid;
-    border-radius: 7px;
-
+  position: relative;
+  left: 15px;
+  height: 35px;
+  width: 210px;
+  font-size: x-small;
+  padding-left: 10px;
+  background-color: rgba(255, 143, 177, 0.25);
+  border: 0px solid;
+  border-radius: 7px;
+  z-index: 0px;
 }
 
 .search-button {
+  position: relative;
   margin-left: 5px;
   height: 35px;
   border: 0px solid;
-  background-color: rgba(255, 255, 255, 0.1);
-  color: #8221FE;
+  background-color: rgba(255, 143, 177, 0);
+  color: #B270A2;
   cursor: pointer;
   transition: transform 0.3s ease;
-
+  left: -20px;
+  z-index: 20px;
 }
 
 .search-button:hover {
@@ -73,9 +77,9 @@ code {
 
 .popup-container {
   position: absolute;
-  top: 290px; /* 원하는 위치로 조정하세요 */
-  left: 0;
-  width: 90%;
+  top: 330px; /* 원하는 위치로 조정하세요 */
+  left: 0px;
+  width: 230px;
   margin-left: 30px;
   max-height: 200px;
   overflow-y: auto;
@@ -103,17 +107,19 @@ code {
 
 
 .selected-place {
+  position: relative;
+  top: -5px;
+  left: 15px;
   font-size: x-small;
-  width: 95%;
+  width: 210px;
   display: flex;
-  align-items: left;
+  align-items: center;
   text-align: left;
-  border: 1px solid #8221FE;
-  background-color: #ffffff;
+  border: 1px solid rgba(255, 143, 177, 0.3);
+  background-color: rgba(255, 143, 177, 0.1);
   border-radius: 7px;
   padding: 5px;
   margin-bottom: 5px;
-  
 }
 
 .selected-place strong {
@@ -126,7 +132,7 @@ code {
   border: none;
   cursor: pointer;
   font-size: 14px; /* 원하는 버튼 크기로 조정 */
-  color: #8221FE; /* 버튼 색상 지정 */
+  color: #B270A2; /* 버튼 색상 지정 */
   transition: transform 0.3s ease;
 }
 
@@ -144,8 +150,11 @@ code {
 .no-bullet-list {
   list-style-type: none; /* 불렛 숨기기 */
   padding-left: 0;
+  
 }
 
-
-
+.search-input-container {
+  display:inline-flex;
+  align-items: center;
+}
 

@@ -34,11 +34,16 @@ function Group_Modal({isOpen, onClose, inputGroupValue, inputEmailValue, emailLi
           <button className="buttonGroupEmail" onClick={handleEmailSubmit}>입력</button>
         </div>
         <div>
-          <p>추가한 이메일</p>
+          <p style={{fontSize:"small"}}>추가한 이메일</p>
           <ul>
             {emailList.map((inputEmailValue, index) => (
-              <li key={index}>{inputEmailValue}
-               <button className="buttonGroupEmailRemove" onClick={() => handleRemoveEmail(index)}>x</button>
+              <li key={index}>
+                <div className="emailListItem">
+                  <span>{inputEmailValue}</span>
+                  <button className="buttonGroupEmailRemove" onClick={() => handleRemoveEmail(index)}>
+                    x
+                  </button>
+                </div>
               </li>
             ))}
           </ul>

@@ -1,18 +1,22 @@
-//import styled from 'styled-components';
+import React from 'react';
+import styled from 'styled-components';
 import GoogleLoginButton from './GoogleLoginButton';
 import LogoBox from './LogoBox';
-//import axios from "axios"; //백엔드랑 통신할 때 필요한 라이브러리
+import SimpleKakaoMap from './SimpleKakaoMap';
 
-function LoginPage () {
+const StyledLoginPage = styled.div`
+  background-color: rgb(252, 226, 219, 0.2); /* 배경색 지정 */
+  height: 100vh;
+`;
 
-    return(
-        <div>
-            <LogoBox />
-            <GoogleLoginButton />
-        </div>
-    );
-
+const LoginPage = () => {
+  return (
+    <StyledLoginPage>
+      <LogoBox />
+      <GoogleLoginButton />
+      <SimpleKakaoMap />
+    </StyledLoginPage>
+  );
 };
 
-
-export default LoginPage
+export default LoginPage;

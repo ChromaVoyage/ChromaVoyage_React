@@ -100,7 +100,7 @@ function Tab1_DS({ openTab2_DS, isTab2_DSOpen }) {
                     <b>{'>'}</b>
                   </button>
                 </div>
-                {showTab2_DS && <Tab2_DS />}
+                {/* {showTab2_DS && <Tab2_DS />} */}
               </div>
             ))}
           </div>
