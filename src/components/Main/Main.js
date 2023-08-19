@@ -46,8 +46,9 @@ function Main() {
   const handleToggleTabs = () => {
     setSelectedPlaces([]);
     setSelectedLocations([]);
+    
   
-    if (!isTab1Open && !isTab2Open && apiPlacesClick === false) {
+    if (!isTab1Open && !isTab2Open && apiPlacesClick === false ) {
       setIsTab1Open(true);
       setIsTab1_DSOpen(false);
       setIsTab2_DSOpen(false);
