@@ -113,12 +113,12 @@ function Modal({ isOpen, onClose}) {
         <button className="closeButton" onClick={onClose}>
           &times;
         </button>
-        <h2>프로필 수정</h2>
+        <h2 className='ProfileModify'>프로필 수정</h2>
+        <hr className="line" />
         <div>
-      
-          <p>프로필 이미지</p> 
-          <div>
-            {profileData.image && (<img className="ProfileImage" alt="profileimage" src={profileData.image}/>)}
+          <p className='imageline'>프로필 이미지</p> 
+          <div className='ProfileImage'>
+            {profileData.image && (<img className='ProfileImagevalue' alt="profileimage" src={profileData.image}/>)}
           </div>
           {/*이미지 업로드 버튼*/}
           <input type="file" accept="image/*" onChange={handleImageChange}/>
@@ -131,7 +131,7 @@ function Modal({ isOpen, onClose}) {
           </button>
         </div>
         <div>
-            <p>닉네임</p>
+            <p className='NickName'>닉네임</p>
             <p>한글,영문(대소문자),숫자 조합/2~18자 이하</p>
             <input
               type="text"
