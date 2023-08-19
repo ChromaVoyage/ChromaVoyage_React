@@ -172,7 +172,7 @@ function Tab1({ openTab2, isTab2Open }) {
           </div>
         </div>
       </div>
-      {showTab2 && <Tab2 />}
+      {/* {showTab2 && <Tab2 />} */}
     </div>
   );
 }

@@ -15,7 +15,7 @@
     .Tab1_DSItem {
       padding: 15px;
       padding-bottom: 10px;
-      border-bottom: 1px solid rgba(130, 33, 254, 0.25);
+      border-bottom: 1px solid rgba(178, 112, 162, 0.4);
       cursor: pointer;
       font-size:large;
     }
@@ -33,7 +33,7 @@
     .GroupBox_DS {
       border-style: solid;
       border-width: 0.8px;
-      border-color: #8221FE;
+      border-color: #7A4495;
       border-radius: 15px;
       margin: 1ch 25px 17px 25px;
       height: 107px;
@@ -49,7 +49,7 @@
     .GroupBox_DS:last-child {
       border-style: solid;
       border-width: 0.8px;
-      border-color: #8221FE;
+      border-color: #7A4495;
       border-radius: 15px;
       margin: 15px 25px 10px 25px;
       height: 107px;
@@ -65,7 +65,7 @@
     .GroupBox_DS:only-child {
       border-style: solid;
       border-width: 0.8px;
-      border-color: #8221FE;
+      border-color: #7A4495;
       border-radius: 15px;
       margin: 10px 25px 17px 25px;
       height: 107px;
@@ -79,7 +79,7 @@
     }
 
     .GroupBox_DS.active {
-        background-color: rgba(130, 33, 254, 0.1);
+        background-color: rgba(255, 143, 177, 0.25);
       }
   
   
@@ -129,9 +129,9 @@
       width: 35px;
       height: 35px;
       font-size: large;
-      border: 1px solid #8221FE;
+      border: 1px solid #B270A2;
       border-radius: 20px;
-      background-color: #8221FE;
+      background-color: #B270A2;
       color: #ffffff;
     }
 

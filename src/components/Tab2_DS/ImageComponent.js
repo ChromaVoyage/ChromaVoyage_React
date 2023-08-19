@@ -185,7 +185,7 @@ function ImageComponent() {
   return (
     <div className="image-component">
       <div className="tab-header">
-        <div className="Tab2_DSItem"><b>이미지</b></div>
+        <div><b>이미지</b></div>
         <button className="edit-button" onClick={handleModalOpen}>수정</button>
       </div>
 

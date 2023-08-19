@@ -161,7 +161,7 @@ function Tab2() {
             <DaumPostcode
               onComplete={handleAddress}
             />
-            <button onClick={handleDaumPostcodeClose}>x</button>
+            <button onClick={handleDaumPostcodeClose} className="PostcodeCloseBtn">x</button>
           </div>
         )}
 

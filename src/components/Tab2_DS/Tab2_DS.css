@@ -17,10 +17,9 @@
   }
   
   .Tab2_DSItem {
-    padding: 5px;
-    margin-left: 5px;
+    padding: 15px;
     padding-bottom: 10px;
-    border-bottom: 1px solid rgba(130, 33, 254, 0.25);
+    border-bottom: 1px solid rgba(178, 112, 162, 0.4);
     cursor: pointer;
     font-size:large;
   }
@@ -194,6 +193,11 @@
   align-items: center;
   margin-bottom: 10px;
   margin-right: 10px;
+  width: 90%;
+  padding: 15px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(178, 112, 162, 0.4);
+  font-size:large;
 }
 
 .edit-button-container {
@@ -211,7 +215,7 @@
   height: 25px;
   text-align: center;
   font-size: x-small;
-  background-color: #8221FE;
+  background-color: #B270A2;
   color: white;
   border: none;
   border-radius: 10px;
