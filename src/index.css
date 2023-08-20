@@ -157,3 +157,12 @@ code {
   display:inline-flex;
   align-items: center;
 }
+
+.area-tooltip {
+  background-color: rgb(252, 226, 219, 0.9); /* 툴팁 배경색 */
+  color: #000; /* 툴팁 텍스트 색상 */
+  padding: 3px 5px; /* 툴팁 내부 여백 */
+  border-radius: 4px; /* 툴팁 모서리 둥글기 */
+  font-size: x-small; /* 툴팁 텍스트 크기 */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 툴팁 그림자 */
+}
