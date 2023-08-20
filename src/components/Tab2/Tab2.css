@@ -63,12 +63,22 @@
   transform: scale(1.02); /* 호버 시 크기 약간 확대 */
 }
 
+.DaumPostcodeContainer {
+  margin-top: 200px;
+  margin-left: 20px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 9999; /* Make sure it's on top of other elements */
+}
+
 .PostcodeCloseBtn {
-position: relative;
-top: -420px;
-left: 285px;
-border-radius: 10px;
-border: 0px solid;
-background-color: rgba(255, 255, 255, 0);
-font-size: 2rem;
+  position: absolute;
+  top: 0px;
+  right: 5px;
+  font-size: 1.1rem; /* Increase the font size for a larger x icon */
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
 }

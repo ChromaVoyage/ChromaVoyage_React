@@ -41,7 +41,7 @@ const MapComponent = () => {
             setSelectedPlaces((prev) => [...prev, place]);
         })
         .catch(error => {
-          console.error("Error saving place:", error);
+          // console.error("Error saving place:", error);
         });
     }
   };

@@ -35,7 +35,7 @@ function ImageComponent() {
   
         setTempSelectedImages(selectedImageArray);
       } catch (error) {
-        console.error("Error fetching saved images:", error);
+        // console.error("Error fetching saved images:", error);
         setSelectedImages([]);
   
         setTempSelectedImages([]);

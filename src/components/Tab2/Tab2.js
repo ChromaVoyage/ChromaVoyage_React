@@ -156,14 +156,15 @@ function Tab2() {
         />
 
         {/* Daum Postcode component */}
-        {showDaumPostcode && (
-          <div>
-            <DaumPostcode
-              onComplete={handleAddress}
-            />
-            <button onClick={handleDaumPostcodeClose} className="PostcodeCloseBtn">x</button>
-          </div>
-        )}
+        <div className={`DaumPostcodeContainer ${showDaumPostcode ? 'show' : ''}`}>
+    {showDaumPostcode && (
+      <>
+        <DaumPostcode onComplete={handleAddress} />
+        <button onClick={handleDaumPostcodeClose} className="PostcodeCloseBtn">x</button>
+      </>
+    )}
+  </div>
+
 
         <div className="Tab2Text" style={{ paddingTop: '10px' }}>
           선택된 지역:

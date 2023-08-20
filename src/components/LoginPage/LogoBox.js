@@ -21,7 +21,8 @@ justify-content: center;
 align-items: center;
 margin-top: 120px;
 margin-bottom: 40px;
-color: #7A4495;
+//color: #7A4495;
+color: #4a215f;
 font-weight: bold;
 //box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.4);
 
