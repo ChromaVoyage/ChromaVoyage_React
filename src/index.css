@@ -77,7 +77,7 @@ code {
 
 .popup-container {
   position: absolute;
-  top: 310px; /* 원하는 위치로 조정하세요 */
+  top: 330px; /* 원하는 위치로 조정하세요 */
   left: 0px;
   width: 230px;
   margin-left: 30px;
@@ -150,11 +150,10 @@ code {
 .no-bullet-list {
   list-style-type: none; /* 불렛 숨기기 */
   padding-left: 0;
+  
 }
 
 .search-input-container {
   display:inline-flex;
   align-items: center;
 }
-
-

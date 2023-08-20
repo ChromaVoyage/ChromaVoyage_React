@@ -3,29 +3,44 @@ import styled from 'styled-components';
 
 const Wrapper = styled.div`
     display: flex;
-    justify-content: center;
     align-items: center;
-    min-height: 100vh;
+    overflow: hidden;
 `;
 
 const Box = styled.div`
-    background-color: #7A4495;
-    width: 300px;
-    height: 100px;
-    font-size: 5rem;
-    text-align: center;
-    padding: 5rem;
-    border-radius: 2rem;
+//background-color: #fff;
+width: 300px;
+height: 100px;
+font-size: 5rem;
+text-align: center;
+padding: 4rem;
+border-radius: 2rem;
+margin-left: 10px;
+display: flex;
+justify-content: center;
+align-items: center;
+margin-top: 120px;
+margin-bottom: 40px;
+color: #7A4495;
+font-weight: bold;
+//box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.4);
+
+`;
+
+const LogoImage = styled.img`
+  width: 110px;
+  height: 60px;
 `;
 
 const LogoBox = () => {
-
-    return(
-        <Wrapper>
-            <Box>Logo</Box>
-        </Wrapper>
-    );
-
+  return (
+    <Wrapper>
+      <Box>
+        <LogoImage src="/location2.png" alt="Logo" />
+        Chroma Voyage
+      </Box>
+    </Wrapper>
+  );
 };
 
 export default LogoBox;

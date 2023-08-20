@@ -35,37 +35,45 @@
 }
 
 .inputGroupName {
-  background-color: rgba(130,33,254,0.1);
+  background-color: rgb(178, 112, 162, 0.2);
+  font-size: small;
   width: 200px;
-  height: 50px;
-  border-radius: 1rem;
+  height: 35px;
+  text-align: center;
+  border-radius: 7px;
   color: #000000;
   border-color: white;
   border: none;
 }
 
 .GroupEmail {
-  font-size: medium;
+  font-size: small;
   font-weight: lighter;
 }
 .inputGroupEmail {
-  background-color: rgba(130,33,254,0.1);
-  width: 200px;
-  height: 50px;
+  font-size: small;
+  margin-left: 45px;
+  text-align: center;
+  background-color: rgb(178, 112, 162, 0.2);
+  width: 230px;
+  height: 35px;
   color: black;
   border: none;
-  border-radius: 1rem;
+  border-radius: 7px;
 }
 
 .buttonGroupEmail {
-  background-color: #8221FE;
+  background-color: #7A4495;
+  padding: 5px;
+  font-size: x-small;
+  margin-left: 10px;
   color: white;
   border: none;
-  border-radius: 2rem;
+  border-radius: 5px;
 }
 
 .buttonGroupEmailRemove {
-  position: absolute;
+  
   right: 15px;
   color: black;
   background: none;
@@ -76,8 +84,25 @@
 
 
 .buttonSubmit {
-  background-color: #8221FE;
+  width: 100px;
+  height: 28px;
+  font-size: x-small;
+  padding: 5px;
+  background-color: #7A4495;
   color: white;
   border: none;
-  border-radius: 2rem;
+  border-radius: 5px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 15px;
+}
+
+ul li {
+  font-size: small;
+  margin-left: 5px;
+  align-items: center; /* Vertically center items */
+  margin-bottom: 5px; /* Optional: Add some spacing between items */
 }
