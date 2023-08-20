@@ -33,35 +33,34 @@ function Modal({ isOpen, onClose}) {
   const userId = localStorage.getItem('userId');
   
   useEffect(() => {
-    console.log(userId);
-  fetchUserProfile();
-}, []);
+    if (isOpen) {
+      fetchUserProfile();
+    }
+  }, [isOpen]);
 
-const fetchUserProfile = async () => {
-  try {
-    const response = await axios.get('/profiles', {
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      data: {
-        user_id: localStorage.getItem('userId').toString() // 사용자 ID를 명세서에 따라 하드코딩 또는 로컬 스토리지에서 가져오기
-      }
-    });
+  const fetchUserProfile = async () => {
+    try {
+      const userId = localStorage.getItem('userId');
+      const response = await axios.get(`/profiles`, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        data: {
+          user_id: userId.toString(),
+        },
+      });
 
-    
-
-    // 나머지 코드는 동일합니다
-    console.log("프로필 조회 성공");
-    setProfileData({
-      ...profileData,
-      "nickname": response.data.user_name,
-      "image": response.data.profileImg_path ? response.data.profileImg_path : userImg,
-      "email": response.data.email
-    });
-  } catch (error) {
-    console.error('프로필 정보를 가져오는 중 오류 발생:', error);
-  }
-};
+      setProfileData({
+        nickname: response.data.user_name,
+        image: response.data.profileImg_path
+          ? response.data.profileImg_path
+          : userImg,
+        email: response.data.email,
+      });
+    } catch (error) {
+      console.error('프로필 정보를 가져오는 중 오류 발생:', error);
+    }
+  };
   
   if (!isOpen) return null;
   
