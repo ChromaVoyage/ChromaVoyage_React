@@ -15,7 +15,7 @@ font-size: 5rem;
 text-align: center;
 padding: 4rem;
 border-radius: 2rem;
-margin-left: 10px;
+margin-left: 50px;
 display: flex;
 justify-content: center;
 align-items: center;
@@ -28,8 +28,9 @@ font-weight: bold;
 `;
 
 const LogoImage = styled.img`
-  width: 110px;
-  height: 60px;
+  width: 260px;
+  height: 130px;
+  margin-right: 25px;
 `;
 
 const LogoBox = () => {
