@@ -20,7 +20,7 @@
 
 .line {
   border: none;
-  border-top: 1px solid #a9a3a3;
+  border-top: 1px solid rgba(178, 112, 162, 0.4);
 }
 .closeButton {
   position: absolute;
@@ -37,17 +37,18 @@
 }
 
 .imageline {
-  font-size: small;
+  font-size: 1rem;
   text-align: left;
 }
 
 .ProfileImage {
   float: left;
-  margin-right: 10px;
+  margin: 10px;
 }
 
 .ProfileImagevalue{
-  width: 15vh; 
+  border-radius: 12.5vh;
+  width: 25vh;
   height: 'auto'
 }
 
@@ -57,4 +58,35 @@
 .ProfileImage {
   width: 15vh; 
   height: 'auto'
+}
+
+.imgBtn {
+  width: 100px;
+  height: 50px;
+  border-radius: 20px;
+  border: 1px solid #B270A2;
+  background-color: #B270A2;
+  color: white;
+  box-shadow: 0.1px 0.2px 3px gray;
+  margin: 5px;
+  margin-top: 20px;
+}
+
+.nicknameInput {
+  width: 100%;
+  background-color: rgba(252, 226, 219, 0.5);
+  height: 30px;
+  border-radius: 5px;
+  text-align: left;
+  border: none;
+}
+
+.imgSection {
+  display: flex;
+}
+
+.imgSection_left {
+  position: relative;
+  left: 80px;
+  top: 150px;
 }

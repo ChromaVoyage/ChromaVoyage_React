@@ -109,7 +109,7 @@ code {
 .selected-place {
   position: relative;
   top: -5px;
-  left: 15px;
+  left: 10px;
   font-size: x-small;
   width: 210px;
   display: flex;

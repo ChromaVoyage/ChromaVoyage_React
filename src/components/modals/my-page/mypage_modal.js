@@ -149,35 +149,47 @@ const fetchUserProfile = async () => {
         </button>
         <h2 className='ProfileModify'>프로필 수정</h2>
         <hr className="line" />
-        <div>
-          <p className='imageline'>프로필 이미지</p> 
-          <div className='ProfileImage'>
-            {profileData.image && (<img className='ProfileImagevalue' alt="profileimage" src={profileData.image}/>)}
-          </div>
-          {/*이미지 업로드 버튼*/}
-          <input type="file" accept="image/*" onChange={handleImageChange}/>
-          <p>
-            확장자: png,jpg,jpeg/용량:1MB 이하
-          </p>
-          {/*이미지 삭제*/}
-          <button onClick={handleImageDelete}>
-            이미지 삭제
-          </button>
+        <div className="imgSection">
+          <span className="imgSection_right">
+            <p className='imageline'><b>프로필 이미지</b></p> 
+            <div className='ProfileImage'>
+              {profileData.image && (<img className='ProfileImagevalue' alt="profileimage" src={profileData.image}/>)}
+            </div>
+          </span>
+          <span className="imgSection_left"> 
+            {/*이미지 업로드 버튼*/}
+            <button for="input-file" className="imgBtn"><b>이미지 업로드</b></button>
+            <input type="file" id="input-file" style = {{ display: "none" }} accept="image/*" onChange={handleImageChange}/>
+            {/*이미지 삭제*/}
+            <button onClick={handleImageDelete} className="imgBtn">
+              <b>이미지 삭제</b>
+            </button>
+            <p style={{color: "gray", fontSize: "small", marginTop: "20px"}}>
+              확장자: png,jpg,jpeg/용량:1MB 이하
+            </p>
+          </span>
         </div>
         <div>
-            <p className='NickName'>닉네임</p>
-            <p>한글,영문(대소문자),숫자 조합/2~18자 이하</p>
+            <p style={{textAlign: "left"}}><b>닉네임</b></p>
+            <p style={{color: "gray", fontSize: "small", textAlign: "left"}}>
+              한글,영문(대소문자),숫자 조합/2~18자 이하
+            </p>
             <input
               type="text"
               value={profileData.nickname}
               onChange={handleNicknameChange}
+              className="nicknameInput"
             />
         </div>
-        <p>연동 e-mail</p>
-        <div>   
-          <p>{profileData.email}</p>
-        </div>
-        <button onClick={handleProfileUpdate}>저장</button>
+
+        <span>
+          <p style={{textAlign: "left"}}><b>연동 e-mail</b></p>
+          <div style={{backgroundColor: "rgba(252, 226, 219, 0.5)", height: "30px", borderRadius: "5px", textAlign: "left", width: "100%"}}>   
+            <p>{profileData.email}</p>
+          </div>
+        </span>
+        
+        <button onClick={handleProfileUpdate} className="imgBtn"><b>저장</b></button>
       </div>
     </div>
   );
