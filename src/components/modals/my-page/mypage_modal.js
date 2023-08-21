@@ -1,4 +1,4 @@
-import React,{useState, useEffect} from 'react';
+import React,{useState, useEffect, useRef} from 'react';
 import './mypage_modal.css';
 import axios from 'axios';
 import userImg from './mypage_user.png'; //기본프로필 이미지를 위함
@@ -11,90 +11,52 @@ function Modal({ isOpen, onClose}) {
     email: ''
   })
   const [uploadImage, setUploadImage] = useState(null); //업로드할 파일객체
-
-  /*임시로 프로필 조회 - 벡엔드로부터 받아오는 거 구현하면 삭제할부분*/
-  useEffect(() => {
-    let nickname = localStorage.getItem('name');
-    let image = localStorage.getItem('picture')?localStorage.getItem('picture'):userImg;
-    let email = localStorage.getItem('email');
-    setProfileData({
-      ...profileData,
-      "nickname": nickname,
-      "image": image,
-      "email": email
-    });
-  }, []);
-
-  //userId 받아오기
-  // const userId = localStorage.getItem('userId');
+  const imageInputRef = useRef(); //input 태그 숨기기 위함
 
   /* 백엔드로부터 프로필 조회 */
-
   const userId = localStorage.getItem('userId');
   
   useEffect(() => {
-    console.log(userId);
-  fetchUserProfile();
-}, []);
+    if (isOpen) {
+      fetchUserProfile();
+    }
+  }, [isOpen]);
 
-const fetchUserProfile = async () => {
-  try {
-    const response = await axios.get('/profiles', {
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      data: {
-        user_id: localStorage.getItem('userId').toString() // 사용자 ID를 명세서에 따라 하드코딩 또는 로컬 스토리지에서 가져오기
-      }
-    });
-
-    
-
-    // 나머지 코드는 동일합니다
-    console.log("프로필 조회 성공");
-    setProfileData({
-      ...profileData,
-      "nickname": response.data.user_name,
-      "image": response.data.profileImg_path ? response.data.profileImg_path : userImg,
-      "email": response.data.email
-    });
-  } catch (error) {
-    console.error('프로필 정보를 가져오는 중 오류 발생:', error);
-  }
-};
-  
-  if (!isOpen) return null;
-  
-  //userId 받아오기
-  
-  if (!isOpen) return null;
-
-  /* 백엔드로부터 프로필 조회 */
-  /* useEffect(() => {
-    fetchUserProfile();
-  }, []);
-  //userid localstorage로부터 가져오는 로직추가
   const fetchUserProfile = async () => {
     try {
-      //userid넘기기로직 추가 -body
-      const response = await axios.get(`/profiles/${userId}`); 
+      const response = await axios.get('/profiles', {
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        params : {
+          user_id: localStorage.getItem('userId').toString() // 사용자 ID를 명세서에 따라 하드코딩 또는 로컬 스토리지에서 가져오기
+        }
+      });
+    // 나머지 코드는 동일합니다
+      console.log("프로필 조회 성공");
       setProfileData({
         ...profileData,
         "nickname": response.data.user_name,
-        "image": response.data.profileImg_path?response.data.profileImg_path:userImg, //유저이미지값이 null이면 기본이미지로 대체
+        "image": response.data.profileImg_path ? response.data.profileImg_path : userImg,
         "email": response.data.email
       });
     } catch (error) {
       console.error('프로필 정보를 가져오는 중 오류 발생:', error);
     }
-  }; */
-
+  };
+  
+  if (!isOpen) return null;
+  
   const handleImageChange = (e) => { //업로드
     // 이미지를 업로드 및 상태 업데이트
     const uploadedImage = e.target.files[0];
     setUploadImage(uploadedImage); //파일객체로 저장
     setProfileData({...profileData, image: URL.createObjectURL(uploadedImage)});//미리보기 이미지 저장
   };
+  
+  const handleUploadClick = () => {
+    imageInputRef.current.click();
+  }
 
   const handleImageDelete = () => { 
     setProfileData(prevprofileData => ({
@@ -158,8 +120,8 @@ const fetchUserProfile = async () => {
           </span>
           <span className="imgSection_left"> 
             {/*이미지 업로드 버튼*/}
-            <button for="input-file" className="imgBtn"><b>이미지 업로드</b></button>
-            <input type="file" id="input-file" style = {{ display: "none" }} accept="image/*" onChange={handleImageChange}/>
+            <input type="file" id="input-file" ref={imageInputRef} style = {{ display: "none" }} accept="image/*" onChange={handleImageChange}/>
+            <button for="input-file" className="imgBtn" onClick={handleUploadClick}><b>이미지 업로드</b></button>
             {/*이미지 삭제*/}
             <button onClick={handleImageDelete} className="imgBtn">
               <b>이미지 삭제</b>

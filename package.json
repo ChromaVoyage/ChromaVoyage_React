@@ -19,7 +19,6 @@
     "react-scripts": "5.0.1",
     "styled-components": "^6.0.5",
     "web-vitals": "^2.1.4"
-    
   },
   "scripts": {
     "start": "react-scripts start",
@@ -44,5 +43,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }, "proxy": "http://ec2-43-201-141-120.ap-northeast-2.compute.amazonaws.com:9000"
+  },
+  "proxy": "http://ec2-43-201-141-120.ap-northeast-2.compute.amazonaws.com:9000"
 }
