@@ -158,7 +158,7 @@ function Tab1({ openTab2, isTab2Open }) {
                   <span className="GroupMembers">
                     <img src={groupmembersImage} alt="GroupMembers" className="groupmembersImage" />
                     <span className="groupmembersText">
-                      <b>{group.groupMembers[1]}</b> 외 {group.groupMembers.length - 1}명
+                      <b>{group.groupMembers[0]}</b> 외 {group.groupMembers.length - 1}명
                     </span>
                   </span>
                 </div>

@@ -12,6 +12,7 @@ function Tab1_DS({ openTab2_DS, isTab2_DSOpen }) {
 
   useEffect(() => {
     if (clickLocationName) {
+      console.log(clickLocationName);
       // HTTP 요청을 보내서 데이터를 가져옵니다.
       fetch('/groups/location', {
         method: 'POST',
