@@ -1,0 +1,157 @@
+.Tab1 {
+  position: relative;
+  left: 0px;
+  width: 250px;
+  height: 100%;
+  background-color: #ffffff;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  border-radius: 0px 20px 20px 0px;
+  box-shadow: 0.2px 0.2px 15px gray;
+}
+
+  .Tab1Item {
+    padding: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(178, 112, 162, 0.4);
+    cursor: pointer;
+    font-size:large;
+  }
+
+
+  .Tab1Contents {
+    margin: 10px 0px 20px 0px;
+    flex: 1; /* 남은 공간을 차지합니다. */
+    background-color: #ffffff;
+    overflow-y: scroll;
+  }
+
+
+  /* 내부 그룹 박스 */
+  .GroupBox {
+    border-style: solid;
+    border-width: 0.8px;
+    border-color: #7A4495;
+    border-radius: 15px;
+    margin: 1ch 25px 17px 25px;
+    height: 107px;
+    background-color: #ffffff;
+    box-shadow: 0px 0px 7px rgb(161, 161, 161);
+    
+    box-sizing: border-box; /* 안쪽 여백만 요소 높이에 포함되도록 설정합니다. */
+    padding: 10px 10px 10px 15px; /* 원하는 안쪽 여백 값을 설정합니다. */
+    display: flex;
+    justify-content: space-between; /* 요소들을 가로 방향으로 최대한 넓게 분배하여 두 요소를 양쪽으로 밀어냄 */
+  }
+
+  .GroupBox:last-child {
+    border-style: solid;
+    border-width: 0.8px;
+    border-color: #7A4495;
+    border-radius: 15px;
+    margin: 15px 25px 10px 25px;
+    height: 107px;
+    background-color: #ffffff;
+    box-shadow: 0px 0px 7px rgb(161, 161, 161);
+
+    box-sizing: border-box; /* 안쪽 여백만 요소 높이에 포함되도록 설정합니다. */
+    padding: 10px 10px 10px 15px; /* 원하는 안쪽 여백 값을 설정합니다. */
+    display: flex;
+    justify-content: space-between; /* 요소들을 가로 방향으로 최대한 넓게 분배하여 두 요소를 양쪽으로 밀어냄 */
+  }
+
+  .GroupBox:only-child {
+    border-style: solid;
+    border-width: 0.8px;
+    border-color: #7A4495;
+    border-radius: 15px;
+    margin: 10px 25px 17px 25px;
+    height: 107px;
+    background-color: #ffffff;
+    box-shadow: 0px 0px 7px rgb(161, 161, 161);
+
+    box-sizing: border-box; /* 안쪽 여백만 요소 높이에 포함되도록 설정합니다. */
+    padding: 10px 10px 10px 15px; /* 원하는 안쪽 여백 값을 설정합니다. */
+    display: flex;
+    justify-content: space-between; /* 요소들을 가로 방향으로 최대한 넓게 분배하여 두 요소를 양쪽으로 밀어냄 */
+  }
+
+  .GroupBox.active {
+    background-color: rgba(255, 143, 177, 0.25); /* #FF8FB1 */
+  }
+
+
+  /* 그룹 박스의 내부 */
+  .LeftContent {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 150px;
+  }
+
+  .GroupName {
+    position: relative;
+    top: 0%;
+    font-size: 20px;
+  }
+
+  .GroupMembers {
+    position: absolute;
+    bottom: 0;
+  }
+
+  .groupmembersImage {
+    width: 30px;
+    height: auto;
+  }
+
+  .groupmembersText {
+    position: relative;
+    top: -5px; /* 음수 값을 써줘서 위로 조금 올라가게 함. */
+    font-size: 0.78rem;
+    left: 2px;
+    color: gray;
+  }
+
+
+  .RightContent {
+    display: column;
+    position: relative;
+    left: 10px;
+  }
+
+  .showTab2Button {
+    position: relative; /* top을 적용하려면 설정해줘야함 */
+    top: 40px;
+    left: 14px;
+    transform: translateY(-50%); /* 요소의 높이의 반만큼 위로 이동 */
+    width: 35px;
+    height: 35px;
+    font-size: large;
+    border: 1px solid #B270A2;
+    border-radius: 20px;
+    background-color: #B270A2;
+    color: #ffffff;
+  }
+
+  .DeleteBtn {
+    position: relative;
+    top: -23px;
+    left: 43px;
+    width: 22px;
+    height: 22px;
+    border-radius: 25px;
+    border: 1px solid rgba(122, 68, 149, 0.5); /* #7A4495 */
+    background-color: #ffffff;
+    box-shadow: 0px 0px 3px rgb(161, 161, 161);
+    color: black;
+  }
+
+  .pinImage {
+    position: relative;
+    top: 3px;
+    width: 20px;
+    left: 0px;
+    height: auto;
+  }

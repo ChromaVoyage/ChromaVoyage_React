@@ -17,6 +17,3 @@ ChromaVoyage_React
 `프로필` | <p align="center"><img width="700" height="350"  alt="image" src="https://github.com/ChromaVoyage/ChromaVoyage_Spring/assets/121854089/f99f3672-6025-40e9-8bae-d80b1794e89d"></p>
 
 
-
-
-

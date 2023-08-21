@@ -1,0 +1,110 @@
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5); /* 반투명한 배경 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modalContent {
+  background-color: white;
+  width: 60%;
+  height: 70%;
+  padding: 40px;
+  border-radius: 4px;
+  text-align: center;
+  overflow: auto; /*자식 div가 밖으로 나가지못하게*/
+}
+
+.closeButton {
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.line {
+  border: none;
+  border-top: 1px solid #a9a3a3;
+}
+
+.inputGroupName {
+  background-color: rgba(252, 226, 219, 0.5);
+  font-size: small;
+  width: 200px;
+  height: 35px;
+  text-align: center;
+  border-radius: 7px;
+  color: #000000;
+  border-color: white;
+  border: none;
+}
+
+.GroupEmail {
+  font-size: small;
+  font-weight: lighter;
+}
+.inputGroupEmail {
+  font-size: small;
+  margin-left: 45px;
+  text-align: center;
+  background-color: rgba(252, 226, 219, 0.5);
+  width: 230px;
+  height: 35px;
+  color: black;
+  border: none;
+  border-radius: 7px;
+}
+
+.buttonGroupEmail {
+  background-color: #B270A2;
+  padding: 5px;
+  font-size: x-small;
+  margin-left: 10px;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0.1px 0.2px 3px gray
+}
+
+.buttonGroupEmailRemove {
+  
+  right: 15px;
+  color: black;
+  background: none;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+
+.buttonSubmit {
+  width: 100px;
+  height: 28px;
+  font-size: x-small;
+  padding: 5px;
+  background-color: #B270A2;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0.1px 0.2px 3px gray
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 15px;
+}
+
+ul li {
+  font-size: small;
+  margin-left: 5px;
+  align-items: center; /* Vertically center items */
+  margin-bottom: 5px; /* Optional: Add some spacing between items */
+}
