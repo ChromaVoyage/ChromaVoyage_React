@@ -1,70 +1,19 @@
-# Getting Started with Create React App
+# ChromaVoyage_React
+ChromaVoyage_React
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<img width="500" height="300" alt="image" src="https://github.com/ChromaVoyage/ChromaVoyage_Spring/assets/121854089/cd471648-d0b3-4073-843e-c04a1fa8d2fe">
 
-## Available Scripts
+# 프로젝트 목적
+언제 누구와 어디를 다니며 추억을 쌓아왔는지에 대한 효율적인 관리를 통해 여행의 즐거움을 오래 간직할 수 있도록 한다.
 
-In the project directory, you can run:
+# 주요 기능
+|기능|화면|
+|:---------:|:---------:|
+`로그인화면` | <p align="center"><img width="700" height="350" alt="image" src="https://github.com/ChromaVoyage/ChromaVoyage_Spring/assets/121854089/c27c36d8-1744-401b-8d2d-3119e72df191"></p>
+`그룹생성` | <img width="700" height="350" alt="image" src="https://github.com/ChromaVoyage/ChromaVoyage_Spring/assets/121854089/65af76c1-ef3c-4271-8def-70a9a784c554">
+`일정추가` | <p align="center"><img width="700" height="350" alt="image" src="https://github.com/ChromaVoyage/ChromaVoyage_Spring/assets/121854089/189ce27d-cba7-4b3c-a3a9-1024834b20fc"></p>
+`장소,시간 추가 및 조회` | <p align="center"><img width="700" height="350" alt="image" src="https://github.com/ChromaVoyage/ChromaVoyage_Spring/assets/121854089/8a2a0642-474f-4bc5-87c4-81357c55d6b4"></p>
+`그룹 별 함께 방문한 지역 표시` | <p align="center"><img width="700" height="350"  alt="image" src="https://github.com/ChromaVoyage/ChromaVoyage_Spring/assets/121854089/14841944-f3d4-4530-8d87-87b528321ab3"></p>
+`프로필` | <p align="center"><img width="700" height="350"  alt="image" src="https://github.com/ChromaVoyage/ChromaVoyage_Spring/assets/121854089/f99f3672-6025-40e9-8bae-d80b1794e89d"></p>
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
