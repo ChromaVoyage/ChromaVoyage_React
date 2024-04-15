@@ -70,7 +70,7 @@ Distributed under the MIT License. See <a href='License'>License</a> for more in
 ## Contact
 
 * Jimin Oh
-* Eunjin Woo :
+* Eunjin Woo : esther0904@naver.com
 * Nari Park :
 * Yerim Hong : onlyennys@gmail.com
 * Sohyeon Hong : xxxx83145@gmail.com
